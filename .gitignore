@@ -1,0 +1,47 @@
+# Archivos de sistema
+.DS_Store
+Thumbs.db
+
+# Archivos de Eclipse
+.classpath
+.project
+.settings/
+bin/
+
+# Archivos de IntelliJ/otros IDEs (por si abrís el proyecto en otro IDE)
+.idea/
+*.iml
+*.ipr
+*.iws
+
+# Maven
+target/
+pom.xml.tag
+pom.xml.releaseBackup
+pom.xml.versionsBackup
+pom.xml.next
+release.properties
+dependency-reduced-pom.xml
+
+# Spring Boot (logs y configuraciones locales)
+*.log
+*.tmp
+*.bak
+*.swp
+*.err
+*.out
+
+# Archivos de configuración sensibles
+.env
+application-*.yml
+application-*.properties
+
+# Archivos de compilación y binarios
+*.class
+*.jar
+*.war
+*.ear
+
+# Archivos de cobertura y pruebas
+coverage/
+*.lcov
