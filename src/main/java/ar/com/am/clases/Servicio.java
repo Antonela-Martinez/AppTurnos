@@ -1,12 +1,26 @@
 package ar.com.am.clases;
 
-public class Servicio {
-	private int id;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
+
+@Entity 
+@Table (name = "SERVICIOS")
+public class Servicio extends Keyed{
+	@Column(name = "nombre")
 	private String nombre;
+	@Column(name = "descripcion")
 	private String descripcion;
-	private int duracion;
+	@Column(name = "precio")
 	private int precio;
+	@Column(name = "duracion")
+	private int duracion;
+	@Column(name = "estado")
 	private boolean estado;
+	
+	Servicio(){
+		
+	}
 	
 	
 	public Servicio(String n, int p) {
