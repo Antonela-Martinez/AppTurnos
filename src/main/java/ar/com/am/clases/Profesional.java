@@ -25,12 +25,52 @@ public class Profesional extends Usuario {
 		this.acceso = acceso;
 	}
 	
+	//ACCESO
+	public DatosAcceso getAcceso() {
+		return this.acceso;
+	}
+	
+	public void setAcceso(DatosAcceso ac) {
+	    if (ac == null) {
+	        throw new IllegalArgumentException("Los datos de acceso no pueden ser nulos");
+	    }
+	    if (!ac.esEmailValido() || !ac.esClaveValida()) {
+	        throw new IllegalArgumentException("Los datos de acceso no son válidos");
+	    }
+	    this.acceso = ac;
+	}
+	
+	//ISADMIN
+	public String getIsAdmin() {
+		return this.isAdmimn;
+	}
+	
+	public void setIsAdmin(String isAdmin) {
+		this.isAdmimn = isAdmin;
+	}
+	
+	
+	//METODOS DE VALIDACION
+	public boolean tieneAccesoValido() {
+	    return acceso != null 
+	           && acceso.esEmailValido() 
+	           && acceso.esClaveValida();
+	}
+	
+	public boolean esProfesionalValido() {
+	    return esDniValido() && tieneAccesoValido();
+	}
+
+	public boolean esAdmin() {
+	    return "ADMIN".equalsIgnoreCase(isAdmimn);
+	}
+	
+
 	public String toString() {
 		return "Profesional: "+getDni()+ "| Nombre: "+ getNombre();
 	}
 	
-	//Tengo que hacer un metodo get del atributo acceso para acceder desde admin?
-
+	
 	public void iniciarSesion() {
 		
 	}
@@ -39,3 +79,4 @@ public class Profesional extends Usuario {
 		
 	}
 }
+

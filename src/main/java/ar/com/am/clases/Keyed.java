@@ -17,5 +17,26 @@ public abstract class Keyed {
 	//estrategia por la cual se va a generar el id, en este caso es autoincremental, lo hace la base de dato
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
+	
+	public Long getId() {
+        return id;
+    }
 
+    // equals basado en id
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;                // mismo objeto en memoria
+        if (o == null || getClass() != o.getClass()) return false; // distinto tipo
+        Keyed keyed = (Keyed) o;
+        return id != null && id.equals(keyed.id);  // compara por id
+    }
+
+    // hashCode coherente con equals
+    @Override
+    public int hashCode() {
+        return id != null ? id.hashCode() : 0;
+    }
 }
+
+
+

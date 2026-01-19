@@ -15,18 +15,28 @@ public class Cliente extends Usuario {
 	}
 	
 	
-	
-	public boolean tieneEmail(String email) {
-	return this.email.equals(email);
-}
-	
-	private void setEmail(String email) {
-		if (email == null) {
-			throw new IllegalArgumentException("El mail no debe estar vacio");
-		}
-		
-		this.email = email;
+	//Setter Email
+	public void setEmail(String email) {
+	    if (email == null || !email.matches("^[A-Za-z0-9+_.-]+@(.+)$")) {
+	        throw new IllegalArgumentException("Email inválido");
+	    }
+	    this.email = email;
 	}
+	
+	//getter Email
+	public String getEmail() {
+		return this.email;
+	}
+
+	public boolean emailExist(String email) {
+	return this.email.equals(email);
+	}
+
+	//METODOS DE VALIDACION
+    public boolean esEmailValido() {
+        return email != null && email.matches("^[A-Za-z0-9+_.-]+@(.+)$");
+    }
+    
 	
 	 public String toString() {
 	    return "Cliente: "+getDni()+ "| Nombre: "+ getNombre();
