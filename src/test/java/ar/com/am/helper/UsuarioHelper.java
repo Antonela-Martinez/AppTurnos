@@ -3,7 +3,7 @@ package ar.com.am.helper;
 import ar.com.am.clases.Cliente;
 import ar.com.am.clases.DatosAcceso;
 import ar.com.am.clases.Profesional;
-import ar.com.am.clases.Usuario;
+
 
 public class UsuarioHelper {
 	public static final Long VALID_USER_DNI = 12123123L;

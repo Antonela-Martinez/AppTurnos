@@ -42,13 +42,13 @@ public abstract class Usuario extends Keyed {
 	}
 
 	//Sobre carga de metodo por si es un string para pasarlo a Long
-	public void setDni(String dniStr) {
+	/*public void setDni(String dniStr) {
 	    try {
 	        this.dni = Long.parseLong(dniStr);
 	    } catch (NumberFormatException e) {
 	        throw new IllegalArgumentException("El DNI debe ser numérico");
 	    }
-	}
+	}*/
 
     // Getter DNI
     public Long getDni() {
