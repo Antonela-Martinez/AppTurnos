@@ -3,6 +3,7 @@ package ar.com.am.clases;
 import jakarta.persistence.Column;
 import jakarta.persistence.DiscriminatorColumn;
 import jakarta.persistence.DiscriminatorType;
+import jakarta.persistence.DiscriminatorValue;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Inheritance;
 import jakarta.persistence.InheritanceType;
@@ -13,7 +14,9 @@ import jakarta.persistence.Table;
 @Inheritance(strategy =InheritanceType.SINGLE_TABLE)
 //Discrimina si tiene que crear un objeto profesional o un objeto admin ??? hibernate nos ofrece los tipo de discriminador que pueden ser
 @DiscriminatorColumn(name="discriminator",discriminatorType = DiscriminatorType.STRING)
+@DiscriminatorValue(value = Admin.DISCRIMINATOR_VALUE)
 public class Profesional extends Usuario {
+	public static final String DISCRIMINATOR_VALUE = "PROFESIONAL";
 	@Column(name = "datos_acceso_id")
 	private DatosAcceso acceso;
 	//@Column(name = "isAdmin")

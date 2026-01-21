@@ -17,7 +17,7 @@ public class UserServiceImp implements UserService{
 	@Autowired
 	private UserRepository repository;
 	
-	//metodo de negocio
+	//metodos de negocio
 	public void guardarUsuario(Usuario u) {
 		//aca generamos un nivel de abstraccion entre el servicio y el repositorio
 		this.repository.save(u);
