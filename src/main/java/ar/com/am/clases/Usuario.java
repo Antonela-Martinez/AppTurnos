@@ -12,6 +12,17 @@ import jakarta.persistence.Table;
 @Table(name = "USUARIOS")
 @Inheritance(strategy =InheritanceType.JOINED )
 public abstract class Usuario extends Keyed {
+	
+	private static final Long MAX_VALOR_DNI = 99999999L;
+	private static final Long MIN_VALOR_DNI = 1000000L;
+	private static final String ERROR_MESSAGE_DNI = "El DNI debe ser numérico y válido";
+	private static final String ERROR_MESSAGE_EMPTY = "El campo no puede estar vacío";
+	private static final int NUM_MAX_NAME = 50;
+	private static final String ERROR_MESSAGE_MAX_CARACTER = "El texto no puede superar los 50 caracteres";
+	private static final String ERROR_MESSAGE_TELEFONO = "El teléfono debe tener entre 7 y 15 dígitos";
+	private static final int NUM_NULO_TELEFONO = 0;
+	private static final int NUM_MIN_TELEFONO = 7;
+	private static final int NUM_MAX_TELEFONO = 15;
 	@Column(name = "dni")
 	private Long dni;
 	@Column(name = "nombre")
@@ -28,15 +39,15 @@ public abstract class Usuario extends Keyed {
 	
 	//Constructor
 	public Usuario (Long dni) {
-		this.dni = dni;
+		setDni(dni);
 	}
 	
 	
 	
     // SetterDNI
 	public void setDni(Long dni) {
-	    if (dni == null || dni < 1000000 || dni > 99999999) {
-	        throw new IllegalArgumentException("El DNI debe ser numérico y válido");
+	    if (dni == null || dni < MIN_VALOR_DNI || dni > MAX_VALOR_DNI) {
+	        throw new IllegalArgumentException(ERROR_MESSAGE_DNI );
 	    }
 	    this.dni = dni;
 	}
@@ -60,10 +71,10 @@ public abstract class Usuario extends Keyed {
     //NOMBRE
     public void setNombre(String nombre) {
         if (nombre == null || nombre.trim().isEmpty()) {
-            throw new IllegalArgumentException("El nombre no puede estar vacío");
+            throw new IllegalArgumentException(ERROR_MESSAGE_EMPTY);
         }
-        if (nombre.length() > 50) {
-            throw new IllegalArgumentException("El nombre no puede superar los 50 caracteres");
+        if (nombre.length() > NUM_MAX_NAME ) {
+            throw new IllegalArgumentException(ERROR_MESSAGE_MAX_CARACTER );
         }
         this.nombre = nombre;
     }
@@ -78,10 +89,10 @@ public abstract class Usuario extends Keyed {
     //APELLIDO
     public void setApellido(String apellido) {
         if (nombre == null || nombre.trim().isEmpty()) {
-            throw new IllegalArgumentException("El nombre no puede estar vacío");
+            throw new IllegalArgumentException(ERROR_MESSAGE_EMPTY);
         }
-        if (nombre.length() > 50) {
-            throw new IllegalArgumentException("El nombre no puede superar los 50 caracteres");
+        if (nombre.length() > NUM_MAX_NAME) {
+            throw new IllegalArgumentException(ERROR_MESSAGE_MAX_CARACTER);
         }
         this.apellido = apellido;
     }
@@ -94,12 +105,12 @@ public abstract class Usuario extends Keyed {
     
     //TELEFONO
     public void setTelefono(long telefono) {
-        if (telefono <= 0) {
-            throw new IllegalArgumentException("El teléfono no puede ser nulo ni negativo");
+        if (telefono <= NUM_NULO_TELEFONO) {
+            throw new IllegalArgumentException(ERROR_MESSAGE_EMPTY);
         }
         int longitud = String.valueOf(telefono).length();
-        if (longitud < 7 || longitud > 15) {
-            throw new IllegalArgumentException("El teléfono debe tener entre 7 y 15 dígitos");
+        if (longitud < NUM_MIN_TELEFONO || longitud > NUM_MAX_TELEFONO) {
+            throw new IllegalArgumentException(ERROR_MESSAGE_TELEFONO);
         }
         this.telefono = telefono;
     }
@@ -109,13 +120,14 @@ public abstract class Usuario extends Keyed {
     	return telefono;
     }
     
-    // METODOS DE VALIDACION
+    // METODOS DE VALIDACION al pepe, va a dar siempre correctos porque la validacion esta en el set
+    //y al crear un usuario con set siempre va a ser un usuario correcto
     public boolean tieneDni(Long dni) {
         return this.dni != null && this.dni.equals(dni);
     }
 
     public boolean esDniValido() {
-        return dni != null && dni > 1000000 && dni < 99999999;
+        return dni != null && dni > MIN_VALOR_DNI && dni < MAX_VALOR_DNI;
     }
 
     public boolean tieneNombreValido() {

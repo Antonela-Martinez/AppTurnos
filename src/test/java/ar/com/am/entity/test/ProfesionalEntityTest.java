@@ -39,10 +39,6 @@ public class ProfesionalEntityTest extends UsuarioEntityTest<Profesional>{
 		assertTrue(p.tieneDni(12123123L));
 	}
 
-	@Override
-	public void testTieneDniSucces() {
-		// TODO Auto-generated method stub
-		
-	}
+
 
 }

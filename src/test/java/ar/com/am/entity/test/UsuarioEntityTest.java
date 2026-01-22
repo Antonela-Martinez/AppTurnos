@@ -198,21 +198,5 @@ public abstract class UsuarioEntityTest<T extends Usuario> {
 	    }
 
 
-
-
-
-
-
-
-	@Test
-	public abstract void testTieneDniSucces();
-	
-	@Test
-	public abstract void testTieneDniFailure();
-	
-	@Test
-	public abstract void testTieneDni();
-
-
 	
 }

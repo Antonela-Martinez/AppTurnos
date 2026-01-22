@@ -4,6 +4,8 @@ import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
 
+import ar.com.am.clases.DatosAcceso;
+
 @Entity
 @Table (name = "CLIENTES")
 public class Cliente extends Usuario {
@@ -17,7 +19,7 @@ public class Cliente extends Usuario {
 	
 	//Setter Email
 	public void setEmail(String email) {
-	    if (email == null || !email.matches("^[A-Za-z0-9+_.-]+@(.+)$")) {
+	    if (email == null || !email.matches(FORMAT_EMAIL)) {
 	        throw new IllegalArgumentException("Email inválido");
 	    }
 	    this.email = email;

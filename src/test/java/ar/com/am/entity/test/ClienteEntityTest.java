@@ -31,11 +31,6 @@ public class ClienteEntityTest extends UsuarioEntityTest<Cliente>{
 		assertTrue(c.tieneDni(12123123L));
 	}
 
-	@Override
-	public void testTieneDniFailure() {
-		// TODO Auto-generated method stub
-		
-	}
 
 	
 	
