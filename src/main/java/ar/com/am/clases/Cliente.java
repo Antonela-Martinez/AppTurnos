@@ -4,11 +4,12 @@ import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
 
-import ar.com.am.clases.DatosAcceso;
 
 @Entity
 @Table (name = "CLIENTES")
 public class Cliente extends Usuario {
+	public static final String  ERROR_MSG_EMAIL_INVALIDO = "Email inválido";
+	
 	@Column (name = "email")
 	private String email;
 	
@@ -19,8 +20,11 @@ public class Cliente extends Usuario {
 	
 	//Setter Email
 	public void setEmail(String email) {
-	    if (email == null || !email.matches(FORMAT_EMAIL)) {
-	        throw new IllegalArgumentException("Email inválido");
+	    if (email == null || !email.matches(DatosAcceso.FORMAT_EMAIL)) {
+	        throw new IllegalArgumentException(ERROR_MSG_EMAIL_INVALIDO);
+	    }
+	    if (!email.matches(DatosAcceso.FORMAT_EMAIL)) {
+	        throw new IllegalArgumentException(DatosAcceso.MSG_INVALID_FORMAT_EMAIL);
 	    }
 	    this.email = email;
 	}
@@ -34,13 +38,8 @@ public class Cliente extends Usuario {
 	return this.email.equals(email);
 	}
 
-	//METODOS DE VALIDACION
-    public boolean esEmailValido() {
-        return email != null && email.matches("^[A-Za-z0-9+_.-]+@(.+)$");
-    }
     
-	
-	 public String toString() {
+	public String toString() {
 	    return "Cliente: "+getDni()+ "| Nombre: "+ getNombre();
-	 }
+	}
 }

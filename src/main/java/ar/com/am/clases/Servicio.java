@@ -7,6 +7,11 @@ import jakarta.persistence.Table;
 @Entity 
 @Table (name = "SERVICIOS")
 public class Servicio extends Keyed{
+	public static final String ERROR_MSG_NOMBRE_EMPTY_SERVICIO = "El nombre no puede estar vacío";
+	private static final String ERROR_MSG_MAX_DESCRIPCION = "La descripción no puede superar los 255 caracteres";
+	public static final String ERROR_MSG_PRECIO_INVALIDO = "El precio debe ser válido";
+	public static final int CERO = 0;
+	public static final int NUMERO_MAX = 99999999;
 	@Column(name = "nombre")
 	private String nombre;
 	@Column(name = "descripcion")
@@ -22,21 +27,20 @@ public class Servicio extends Keyed{
 		
 	}
 	
-	
 	public Servicio(String n, int p) {
-		this.nombre = n;
-		this.precio = p;
+		setNombre(n);
+		setPrecio(p); 
 	}
 	
 	//NOMBRE SERVICIO
 	public void setNombre(String nombre) {
         if (nombre == null || nombre.trim().isEmpty()) {
-            throw new IllegalArgumentException("El nombre no puede estar vacío");
+            throw new IllegalArgumentException(ERROR_MSG_NOMBRE_EMPTY_SERVICIO);
         }
-        if (nombre.length() > 50) {
-            throw new IllegalArgumentException("El nombre no puede superar los 50 caracteres");
+        if (nombre.length() > Usuario.NUM_MAX_NAME) {
+            throw new IllegalArgumentException(Usuario.ERROR_MESSAGE_MAX_CARACTER);
         }
-        this.nombre = nombre;
+        this.nombre = nombre; 
     }
 
     public String  getNombre() {
@@ -49,7 +53,7 @@ public class Servicio extends Keyed{
             throw new IllegalArgumentException("La descripción no puede estar vacía");
         }
         if (desc.length() > 255) {
-            throw new IllegalArgumentException("La descripción no puede superar los 255 caracteres");
+            throw new IllegalArgumentException(ERROR_MSG_MAX_DESCRIPCION);
         }
         this.descripcion = desc;
     }
@@ -60,8 +64,8 @@ public class Servicio extends Keyed{
 	
 	//PRECIO
 	public void setPrecio(int precio) {
-	    if (precio < 0 || precio > 99999999) {
-	        throw new IllegalArgumentException("El precio debe ser numérico y válido");
+	    if (precio < CERO || precio > NUMERO_MAX) {
+	        throw new IllegalArgumentException(ERROR_MSG_PRECIO_INVALIDO);
 	    }
 	    this.precio = precio;
 	}
@@ -72,7 +76,7 @@ public class Servicio extends Keyed{
 	
 	//DURACION
 	public void setDuracion(int duracion) {
-	    if (duracion <= 0) {
+	    if (duracion <= CERO) {
 	        throw new IllegalArgumentException("La duración debe ser mayor a 0");
 	    }
 	    if (duracion > 500) { 
@@ -98,8 +102,8 @@ public class Servicio extends Keyed{
 	//METODOS DE VALIDACION
 	public boolean esServicioValido() {
 	    return nombre != null && !nombre.trim().isEmpty()
-	           && precio > 0
-	           && duracion > 0;
+	           && precio > CERO
+	           && duracion > CERO;
 	}
 
 	public boolean estaActivo() {

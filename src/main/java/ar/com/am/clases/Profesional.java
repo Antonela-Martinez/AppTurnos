@@ -1,5 +1,6 @@
 package ar.com.am.clases;
 
+
 import jakarta.persistence.Column;
 import jakarta.persistence.DiscriminatorColumn;
 import jakarta.persistence.DiscriminatorType;
@@ -16,8 +17,8 @@ import jakarta.persistence.Table;
 @DiscriminatorColumn(name="discriminator",discriminatorType = DiscriminatorType.STRING)
 @DiscriminatorValue(value = Admin.DISCRIMINATOR_VALUE)
 public class Profesional extends Usuario {
-	private static final String ERROR_MESSAGE_EMPTY_ACCESO= "Los datos de acceso no pueden ser nulos";
-	private static final String ERROR_MESSAGE_INVALID = "Email o clave no son correctos";
+	public static final String ERROR_MESSAGE_EMPTY_ACCESO= "Los datos de acceso no pueden ser nulos";
+	public static final String ERROR_MESSAGE_INVALID = "Email o clave no son correctos";
 	public static final String DISCRIMINATOR_VALUE = "PROFESIONAL";
 	@Column(name = "datos_acceso_id")
 	private DatosAcceso acceso;
@@ -27,7 +28,7 @@ public class Profesional extends Usuario {
 	
 	public Profesional(Long dni, DatosAcceso acceso) {
 		super(dni);
-		this.acceso = acceso;
+		setAcceso(acceso);
 	}
 	
 	//ACCESO

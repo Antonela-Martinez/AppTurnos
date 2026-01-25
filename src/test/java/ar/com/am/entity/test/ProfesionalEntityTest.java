@@ -1,6 +1,6 @@
 package ar.com.am.entity.test;
 
-import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.Test;
@@ -10,35 +10,55 @@ import ar.com.am.clases.Profesional;
 import ar.com.am.helper.UsuarioHelper;
 
 public class ProfesionalEntityTest extends UsuarioEntityTest<Profesional>{
-	public static final Long VALID_USER_DNI = 12123123L;
-	public static final String VALID_USER_EMAIL = "anto2026@gmail.com";
-	public static final String VALID_USER_CLAVE = "1234";
-	public static final DatosAcceso VALID_DATOS_ACCESO = new DatosAcceso(VALID_USER_EMAIL,VALID_USER_CLAVE);
+	
+
 
 	@Override
 	protected Profesional crearUsuario() {
-		// TODO Auto-generated method stub
-		return new Profesional(VALID_USER_DNI,VALID_DATOS_ACCESO);
+		return UsuarioHelper.createProfesionalValido();
 	}
 	
 	
-	@Test
-	public void testTieneDniFailure() {
-		
-		Profesional p = new Profesional(13123123L, null);
-
-		assertFalse(p.tieneDni(22123123L));
-	}
 	
 	@Test
 	public void testTieneDni() {
-	
-		Profesional p =  UsuarioHelper.createValidProf();
-		
-
+		Profesional p =  UsuarioHelper.createProfesionalValido();
 		assertTrue(p.tieneDni(12123123L));
 	}
+	
+	@Test
+	public void testSetDatosAccesoValido() {
+		Profesional p = UsuarioHelper.createProfesionalValido();
+		p.setAcceso(UsuarioHelper.creatDatosAccesoValido());
+		DatosAcceso acceso = p.getAcceso();
+		assertEquals(p.getAcceso(), acceso);
+	}
+	
+	@Test
+	public void testSetDatosAccesoNull() {
+		try {
+			Profesional p = UsuarioHelper.createProfesionalValido();
+			p.setAcceso(null);
+		}catch(IllegalArgumentException e) {
+			assertEquals(Profesional.ERROR_MESSAGE_EMPTY_ACCESO,e.getMessage());
+		}
+	}
 
+	//?????
+	/*@Test
+	public void testSetDatosAccesoEmpty() {
+		try {
+			Profesional p = UsuarioHelper.createProfesionalValido();
+			p.setAcceso(UsuarioHelper.createDatosAccesoEmpty());
+		}catch(IllegalArgumentException e) {
+			assertEquals(Profesional.ERROR_MESSAGE_EMPTY_ACCESO, e.getMessage());
+		}
+	}*/
+	
+	public void testSetDatosAccesoEmailInvalido() {
+
+	}
+	
 
 
 }

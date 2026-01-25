@@ -12,6 +12,14 @@ import jakarta.persistence.Table;
 @Entity 
 @Table (name = "RESERVAS")
 public class Reserva extends Keyed {
+	public static final String ERROR_MESSAGE_EMPTY_CLIENTE = "La Reserva debe tener un dni Cliente";
+	public static final String ERROR_MESSAGE_EMPTY_PROF = "La reserva debe incluir un profesional";
+	public static final String ERROR_MESSAGE_EMPTY_SERVICIO = "La reserva debe incluir un servicio";
+	public static final String ERROR_MESSAGE_EMPTY_FECHA = "La fecha de la reserva no puede estar vacia";
+	public static final String ERROR_MESSAGE_PASS_FECHA = "La fecha de la reserva no puede ser en el pasado";
+	public static final String ERROR_HORA_INVALIDA = "La hora debe estar entre 0 y 23";
+	private static final int HORA_MAX = 23;
+	private static final int HORA_MIN = 0;
 	@Column(name = "cliente_id")
 	private Cliente cliente;
 	@Column(name = "prof_id")
@@ -32,17 +40,17 @@ public class Reserva extends Keyed {
 	}
 	
 	public Reserva(Cliente cliente, Profesional prof, Servicio servicio, LocalDate fecha, int hora) {
-		this.cliente = cliente;
-		this.profesional = prof;
-		this.servicio = servicio;
-		this.fecha = fecha;
-		this.hora = hora;
+		setCliente(cliente);
+		setProfesional(prof);
+		setServicio(servicio);
+		setFecha(fecha);
+		setHora(hora);
 	}
 	
 	//CLIENTE
 	public void setCliente(Cliente cliente) {
 		if (cliente == null) {
-	        throw new IllegalArgumentException("La reserva debe incluir un servicio");
+	        throw new IllegalArgumentException(ERROR_MESSAGE_EMPTY_CLIENTE);
 	    }
 
 		this.cliente = cliente;
@@ -55,7 +63,7 @@ public class Reserva extends Keyed {
 	//PROFESIONAL
 	public void setProfesional(Profesional prof) {
 		if (prof == null) {
-	        throw new IllegalArgumentException("La reserva debe incluir un servicio");
+	        throw new IllegalArgumentException(ERROR_MESSAGE_EMPTY_PROF);
 	    }
 
 		this.profesional = prof;
@@ -68,7 +76,7 @@ public class Reserva extends Keyed {
 	//SERVICIO
 	public void setServicio(Servicio servicio) {
 		if (servicio == null) {
-	        throw new IllegalArgumentException("La reserva debe incluir un servicio");
+	        throw new IllegalArgumentException(ERROR_MESSAGE_EMPTY_SERVICIO);
 	    }
 		this.servicio = servicio;
 	}
@@ -80,10 +88,10 @@ public class Reserva extends Keyed {
 	//FECHA
 	public void setFecha(LocalDate fecha) {
 	    if (fecha == null) {
-	        throw new IllegalArgumentException("La fecha de la reserva no puede ser nula");
+	        throw new IllegalArgumentException(ERROR_MESSAGE_EMPTY_FECHA);
 	    }
 	    if (fecha.isBefore(LocalDate.now())) {
-	        throw new IllegalArgumentException("La fecha de la reserva no puede ser en el pasado");
+	        throw new IllegalArgumentException(ERROR_MESSAGE_PASS_FECHA);
 	    }
 	    this.fecha = fecha;
 	}
@@ -95,8 +103,8 @@ public class Reserva extends Keyed {
 	
 	//HORA
 	public void setHora(int hora) {
-	    if (hora < 0 || hora > 23) {
-	        throw new IllegalArgumentException("La hora debe estar entre 0 y 23");
+	    if (hora < HORA_MIN|| hora > HORA_MAX) {
+	        throw new IllegalArgumentException(ERROR_HORA_INVALIDA);
 	    }
 	    this.hora = hora;
 	}
@@ -112,7 +120,7 @@ public class Reserva extends Keyed {
 	           servicio != null &&
 	           fecha != null &&
 	           !fecha.isBefore(LocalDate.now()) &&
-	           hora >= 0 && hora <= 23;
+	           hora >= 0 && hora <= HORA_MAX;
 	}
 	
 	//estaActiva() → devuelve true si la fecha de la reserva es futura.

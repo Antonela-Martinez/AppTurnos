@@ -1,5 +1,7 @@
 package ar.com.am.servicios;
 
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -21,5 +23,11 @@ public class UserServiceImp implements UserService{
 	public void guardarUsuario(Usuario u) {
 		//aca generamos un nivel de abstraccion entre el servicio y el repositorio
 		this.repository.save(u);
+	}
+
+	@Override
+	public Usuario obtener(Long id) {
+		Optional<Usuario> user = this.repository.findById(id);
+		return user.get();
 	}
 }

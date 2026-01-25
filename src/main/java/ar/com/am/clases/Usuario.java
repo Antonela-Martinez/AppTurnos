@@ -15,12 +15,12 @@ public abstract class Usuario extends Keyed {
 	
 	private static final Long MAX_VALOR_DNI = 99999999L;
 	private static final Long MIN_VALOR_DNI = 1000000L;
-	private static final String ERROR_MESSAGE_DNI = "El DNI debe ser numérico y válido";
-	private static final String ERROR_MESSAGE_EMPTY = "El campo no puede estar vacío";
-	private static final int NUM_MAX_NAME = 50;
-	private static final String ERROR_MESSAGE_MAX_CARACTER = "El texto no puede superar los 50 caracteres";
-	private static final String ERROR_MESSAGE_TELEFONO = "El teléfono debe tener entre 7 y 15 dígitos";
-	private static final int NUM_NULO_TELEFONO = 0;
+	public static final String ERROR_MESSAGE_DNI = "El DNI debe ser numérico y válido";
+	public static final String ERROR_MESSAGE_EMPTY = "El campo no puede estar vacío";
+	protected static final int NUM_MAX_NAME = 50;
+	public static final String ERROR_MESSAGE_MAX_CARACTER = "El texto no puede superar los 50 caracteres";
+	public static final String ERROR_MESSAGE_TELEFONO = "El teléfono debe tener entre 7 y 15 dígitos";
+	protected static final int NUM_NULO_TELEFONO= 0;
 	private static final int NUM_MIN_TELEFONO = 7;
 	private static final int NUM_MAX_TELEFONO = 15;
 	@Column(name = "dni")
@@ -88,10 +88,10 @@ public abstract class Usuario extends Keyed {
     
     //APELLIDO
     public void setApellido(String apellido) {
-        if (nombre == null || nombre.trim().isEmpty()) {
+        if (apellido == null || apellido.trim().isEmpty()) {
             throw new IllegalArgumentException(ERROR_MESSAGE_EMPTY);
         }
-        if (nombre.length() > NUM_MAX_NAME) {
+        if (apellido.length() > NUM_MAX_NAME) {
             throw new IllegalArgumentException(ERROR_MESSAGE_MAX_CARACTER);
         }
         this.apellido = apellido;
