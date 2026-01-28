@@ -14,8 +14,7 @@ import jakarta.persistence.MappedSuperclass;
 public abstract class Keyed {
 	@Id 
 	@Column(name = "ID")
-	//estrategia por la cual se va a generar el id, en este caso es autoincremental, lo hace la base de dato
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)	//estrategia por la cual se va a generar el id, en este caso es autoincremental, lo hace la base de dato
 	private Long id;
 	
 	public Long getId() {

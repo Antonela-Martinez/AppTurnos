@@ -2,9 +2,12 @@ package ar.com.am.clases;
 
 import java.time.LocalDate;
 
+import jakarta.persistence.CascadeType;
 //import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToOne;
 //import jakarta.persistence.JoinColumn;
 //import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
@@ -20,14 +23,14 @@ public class Reserva extends Keyed {
 	public static final String ERROR_HORA_INVALIDA = "La hora debe estar entre 0 y 23";
 	private static final int HORA_MAX = 23;
 	private static final int HORA_MIN = 0;
-	@Column(name = "cliente_id")
+	@OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "cliente_id", referencedColumnName = "ID")
 	private Cliente cliente;
-	@Column(name = "prof_id")
-	//mas que nada cuando tenes una tabla intermedia, la relacion muchos a muchos
-	//@OneToMany(cascade = CascadeType.ALL)
-	//@JoinColumn(name = "prof_id", referencedColumnName = "ID")
+	@OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "prof_id", referencedColumnName = "ID")
 	private Profesional profesional;
-	@Column(name = "servicio_id")
+	@OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "servicio_id", referencedColumnName = "ID")
 	private Servicio servicio;
 	@Column(name = "fecha")
 	private LocalDate fecha;

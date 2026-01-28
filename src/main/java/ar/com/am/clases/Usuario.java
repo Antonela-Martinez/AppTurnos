@@ -33,13 +33,18 @@ public abstract class Usuario extends Keyed {
 	private long telefono;
 	
 	//Solo para hibernate
-	Usuario(){
-		
+	Usuario(){	
 	}
 	
-	//Constructor
 	public Usuario (Long dni) {
 		setDni(dni);
+	}
+	
+	public Usuario (Long dni,String nombre, String apellido, long telefono) {
+		setDni(dni);
+		setNombre(nombre);
+		setApellido(apellido);
+		setTelefono(telefono);
 	}
 	
 	

@@ -1,5 +1,7 @@
 package ar.com.am.repositorios;
 
+//import java.util.List;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
@@ -12,5 +14,7 @@ import ar.com.am.clases.Usuario;
 //no se pueden crear objetos desde una interfaz, por eso extiende de JpaRepository porque tiene las librerias necesarias para crear una instancia concreta para crear un objeto
 @Repository
 public interface UserRepository extends JpaRepository<Usuario, Long>{
+	
+	//public List<Usuario> findByEmail(String email);
 
 }

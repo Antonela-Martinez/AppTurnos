@@ -28,6 +28,10 @@ public class DatosAcceso extends Keyed{
 	//@Enumerated(EnumType.STRING)
 	//private EstadoAcceso estado;//enum para definir estados, activo, inactivo, autorizado, pendiente 
 	
+	DatosAcceso(){
+		
+	}
+	
 	public DatosAcceso(String us, String contraseña) {
 		setEmailUsr(us);;
 		setClave(contraseña);

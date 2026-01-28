@@ -26,6 +26,12 @@ public class UsuarioHelper {
 	public static final Long VALID_USER_DNI = 12123123L;
 	public static final String VALID_USER_EMAIL = "anto2026@gmail.com";
 	public static final String VALID_USER_CLAVE = "Anto1234";
+	public static final String NOMBRE = "Mirian";
+	public static final String APELLLIDO = "Lopez";
+	public static final long TELEFONO = 22367543;
+	public static final String EMAIL = "miriam@gmail.com";
+	public static final String DISCRIMINADOR = "PROFESIONAL";
+	
 	
 	public final static DatosAcceso creatDatosAccesoValido() {
 		return new DatosAcceso(VALID_USER_EMAIL,VALID_USER_CLAVE);
@@ -37,11 +43,11 @@ public class UsuarioHelper {
 	
 	
 	public final static Profesional createProfesionalValido () {
-		return new Profesional(VALID_USER_DNI,UsuarioHelper.creatDatosAccesoValido());
+		return new Profesional(VALID_USER_DNI,NOMBRE,APELLLIDO,TELEFONO,UsuarioHelper.creatDatosAccesoValido(),DISCRIMINADOR);
 	}
 	
 	public final static Cliente createValidClient () {
-		return new Cliente(VALID_USER_DNI);
+		return new Cliente(VALID_USER_DNI,NOMBRE,APELLLIDO,TELEFONO,EMAIL);
 	}
 	
 	

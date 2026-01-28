@@ -1,4 +1,4 @@
-package ar.com.am.clases;
+package ar.com.am;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

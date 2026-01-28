@@ -26,8 +26,23 @@ public class UserServiceImp implements UserService{
 	}
 
 	@Override
-	public Usuario obtener(Long id) {
+	public Usuario obtenerUsuario(Long id) {
 		Optional<Usuario> user = this.repository.findById(id);
 		return user.get();
 	}
+
+	
+
+	/*@Override
+	public boolean existsUser(String email) {
+		boolean exists = false;
+		
+		if(email != null) {
+			List<Usuario> usuarios = this.repository.findByEmail(email);
+			exists = ! usuarios.isEmpty();
+		}
+		return exists;
+	}*/
+	
+	
 }

@@ -17,6 +17,11 @@ public class Cliente extends Usuario {
 		super(dni);
 	}
 	
+	public Cliente(Long dni, String nombre, String apellido, long telefono, String email) {
+		super(dni, nombre, apellido, telefono);
+		setEmail(email);
+	}
+	
 	
 	//Setter Email
 	public void setEmail(String email) {
