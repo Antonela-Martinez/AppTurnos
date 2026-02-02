@@ -139,6 +139,20 @@ public abstract class Usuario extends Keyed {
         return nombre != null && !nombre.trim().isEmpty();
     }
 
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Usuario)) return false;
+        if (!super.equals(o)) return false;
+
+        Usuario u = (Usuario) o;
+        return this.dni.equals(u.getDni())
+            && this.nombre.equals(u.getNombre())
+            && this.apellido.equals(u.getApellido())
+            && this.telefono == u.getTelefono();
+    }
+
     
 
     

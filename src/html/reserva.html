@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BeautyTurn - Reserva tu Turno</title>
+	<link rel="stylesheet" href = "../css/reserva.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="header-icon">💅</div>
+            <h1>BeautyTurn</h1>
+            <p>Completa el siguiente formulario para reservar tu turno</p>
+        </div>
+
+        <div class="form-container">
+            <form id="bookingForm">
+                <!-- Datos del Cliente -->
+                <h2 class="section-title">Tus datos</h2>
+                
+                <div class="form-group">
+                    <label for="dni">DNI <span class="required">*</span></label>
+                    <input type="text" id="dni" name="dni" placeholder="XXXXXXXX" maxlength="8" required>
+                    <div class="hint">Sin puntos ni guiones. Sólo números.</div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="nombre">Nombre <span class="required">*</span></label>
+                        <input type="text" id="nombre" name="nombre" placeholder="María" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="apellido">Apellido <span class="required">*</span></label>
+                        <input type="text" id="apellido" name="apellido" placeholder="González" required>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="telefono">Teléfono móvil <span class="required">*</span></label>
+                        <input type="tel" id="telefono" name="telefono" placeholder="1123456789" required>
+                        <div class="hint">Sin 0 ni 15. Ingrese sólo números.</div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">E-mail <span class="required">*</span></label>
+                        <input type="email" id="email" name="email" placeholder="maria@gmail.com" required>
+                    </div>
+                </div>
+
+                <!-- Reserva -->
+                <h2 class="section-title" style="margin-top: 40px;">Reserva</h2>
+
+                <div class="form-group">
+                    <label for="servicio">Servicio <span class="required">*</span></label>
+                    <select id="servicio" name="servicio" required>
+                        <option value="">Seleccione tipo</option>
+                        <option value="capping-semi" data-duration="90" data-price="3500">Capping + Semi</option>
+                        <option value="capping-nail-art" data-duration="120" data-price="4500">Capping con nail art en MÁS de 4 uñas</option>
+                        <option value="capping-manos-pies" data-duration="150" data-price="5000">Capping manos+pies</option>
+                        <option value="dipping" data-duration="75" data-price="3000">Dipping acrílico</option>
+                        <option value="esmaltado-semi-nail-art" data-duration="120" data-price="4000">Esmaltado semi con nail art en MÁS de 4 uñas</option>
+                        <option value="esmaltado-semi-manos-pies" data-duration="120" data-price="4500">Esmaltado semi manos+pies</option>
+                        <option value="esmaltado-semipermanente" data-duration="60" data-price="2500">Esmaltado semipermanente</option>
+                        <option value="retirado-esmaltado" data-duration="30" data-price="800">Retirado de esmaltado de pies</option>
+                        <option value="retirado-semi-capping" data-duration="45" data-price="1200">Retirado semi o Capping</option>
+                        <option value="retirado-soft-semi" data-duration="60" data-price="1500">Retirado soft + semi o Capping</option>
+                        <option value="retirado-soft-gel" data-duration="45" data-price="1000">Retirado soft gel</option>
+                        <option value="semi-pies" data-duration="45" data-price="2000">Semi pies</option>
+                        <option value="soft-gel" data-duration="90" data-price="3200">Soft gel</option>
+                        <option value="soft-gel-nail-art" data-duration="120" data-price="4200">Soft gel + nail art</option>
+                        <option value="soft-gel-semi-pies" data-duration="120" data-price="4800">Soft gel + semi pies</option>
+                    </select>
+                    <div class="service-info" id="serviceInfo">
+                        <p><strong>Duración:</strong> <span id="serviceDuration"></span></p>
+                        <p><strong>Precio:</strong> <span id="servicePrice"></span></p>
+                    </div>
+                </div>
+
+                <div class="form-row-3">
+                    <div class="form-group">
+                        <label for="profesional">Profesional <span class="required">*</span></label>
+                        <select id="profesional" name="profesional" required>
+                            <option value="">Seleccione...</option>
+                            <option value="aldana">Aldana</option>
+                            <option value="estefi">Estefí</option>
+                            <option value="evelyn">Evelyn M.</option>
+                            <option value="jaquelin">Jaquelin</option>
+                            <option value="micaela">Micaela</option>
+                            <option value="disponible">Primer disponible</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="fecha">Fecha <span class="required">*</span></label>
+                        <input type="date" id="fecha" name="fecha" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="hora">Hora <span class="required">*</span></label>
+                        <select id="hora" name="hora" required disabled>
+                            <option value="">Seleccione fecha</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div id="successMessage" class="success-message">
+                    <h3>✅ ¡Turno reservado con éxito!</h3>
+                    <p style="margin-top: 10px;">Recibirás un email de confirmación en breve.</p>
+                    <p style="margin-top: 5px; font-weight: 600;">Número de confirmación: #<span id="confirmNumber"></span></p>
+                </div>
+
+                <button type="submit" class="btn-submit">
+                    <span>📅</span>
+                    <span>AGENDAR</span>
+                </button>
+            </form>
+        </div>
+
+        <div class="footer">
+            Powered by BeautyTurn © 2025
+        </div>
+    </div>
+
+    <script type="text/javascript" src="../js/reserva.js"></script>
+    
+</body>
+</html>

@@ -42,6 +42,12 @@ public class Cliente extends Usuario {
 	public boolean emailExist(String email) {
 	return this.email.equals(email);
 	}
+	
+    @Override
+    public boolean equals(Object o) {
+    	Cliente c = (Cliente)o;
+    	return super.equals(o) && this.email.equals(c.getEmail());
+    }
 
     
 	public String toString() {

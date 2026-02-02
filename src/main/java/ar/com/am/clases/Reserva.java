@@ -1,6 +1,7 @@
 package ar.com.am.clases;
 
 import java.time.LocalDate;
+import java.util.Objects;
 
 import jakarta.persistence.CascadeType;
 //import jakarta.persistence.CascadeType;
@@ -150,6 +151,26 @@ public class Reserva extends Keyed {
 	public void reservarTurno() {
 		
 	}
+	
+	@Override
+	public String toString() {
+		return super.toString();
+	}
+	
+	@Override
+	public boolean equals(Object o) {
+	    if (this == o) return true; // misma referencia, atajo rápido
+	    if (!(o instanceof Reserva)) return false; // distinto tipo
+	    //falta id
+	    Reserva r = (Reserva) o;
+
+	    return Objects.equals(this.cliente, r.getCliente())
+	        && Objects.equals(this.profesional, r.getProfesional())
+	        && Objects.equals(this.servicio, r.getServicio())
+	        && Objects.equals(this.fecha, r.getFecha())
+	        && this.hora == r.getHora();
+	}
+
 	
 	
 

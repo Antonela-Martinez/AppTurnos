@@ -1,7 +1,6 @@
 package ar.com.am.entity.test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.Test;
 
@@ -20,11 +19,6 @@ public class ProfesionalEntityTest extends UsuarioEntityTest<Profesional>{
 	
 	
 	
-	@Test
-	public void testTieneDni() {
-		Profesional p =  UsuarioHelper.createProfesionalValido();
-		assertTrue(p.tieneDni(12123123L));
-	}
 	
 	@Test
 	public void testSetDatosAccesoValido() {

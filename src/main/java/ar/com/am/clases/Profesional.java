@@ -86,13 +86,11 @@ public class Profesional extends Usuario {
 		return "Profesional: "+getDni()+ "| Nombre: "+ getNombre();
 	}
 	
-	
-	public void iniciarSesion() {
-		
-	}
-	
-	public void verAgenda() {
-		
+	@Override
+	public boolean equals(Object o) {
+		Profesional p = (Profesional) o;
+		return super.equals(o)	&& this.acceso.equals(p.getAcceso())
+								&& this.isAdmimn == p.getIsAdmin();
 	}
 }
 

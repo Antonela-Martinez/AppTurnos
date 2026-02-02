@@ -111,6 +111,13 @@ public class Servicio extends Keyed{
 	}
 	
 	@Override
+	public boolean equals(Object o) {
+		Servicio s = (Servicio) o;
+		return super.equals(o)	&& this.nombre.equals(s.getNombre())
+								&& this.precio == s.getPrecio();
+	}
+	
+	@Override
 	public String toString() {
 	    return "Servicio{" +
 	           "nombre='" + nombre + '\'' +

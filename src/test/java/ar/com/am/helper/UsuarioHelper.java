@@ -12,7 +12,7 @@ public class UsuarioHelper {
 	
 	private static final char[] caracteres = new char[] {'a','b','c','d','e','f','g','h','i','j','k','l','m',
 			 											'n','o','p','q','r','s','t','u','v','w','x','y','z'};
-	private static final String[] invalidos = new String[]{
+	public static final String[] emailInvalidos = new String[]{
 									            "@gmail.com",
 									            "usuario@.com",
 									            "usuario@gmail",
@@ -23,7 +23,7 @@ public class UsuarioHelper {
 									            "usuario gmail.com",
 									            "usuario@dominio.c0m"
 									        };
-	public static final Long VALID_USER_DNI = 12123123L;
+	public static final Long VALID_USER_DNI = 28123123L;
 	public static final String VALID_USER_EMAIL = "anto2026@gmail.com";
 	public static final String VALID_USER_CLAVE = "Anto1234";
 	public static final String NOMBRE = "Mirian";
@@ -86,7 +86,11 @@ public class UsuarioHelper {
 	}
 	
 	public final static String createEmailInvalido(int pos) {
-		return invalidos[pos];
+		return emailInvalidos[pos];
+	}
+	
+	public final static String createEmailInvalido(String emailInvalid) {
+		return emailInvalid;
 	}
 	
 	public final static String createEmail(int cantCaracteres) {

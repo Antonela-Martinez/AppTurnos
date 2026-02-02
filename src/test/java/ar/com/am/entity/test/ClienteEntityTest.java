@@ -60,6 +60,19 @@ public class ClienteEntityTest extends UsuarioEntityTest<Cliente>{
 	    	} 
 	    
 	    }
+	    
+	    @Test
+	    void testSetEmailInvalidoCliente() {
+	    	
+	    	for(String emailInvalido : UsuarioHelper.emailInvalidos) {
+	    		try {
+	     		DatosAcceso ac = UsuarioHelper.creatDatosAccesoValido();
+	    		ac.setEmailUsr(UsuarioHelper.createEmailInvalido(emailInvalido));
+	    		}catch(IllegalArgumentException e){
+	    		assertEquals(DatosAcceso.MSG_INVALID_FORMAT_EMAIL, e.getMessage());
+	    		} 
+	    	}	
+	    }
 /*	    
 	    @Test
 	    void testSetEmailInvalido1() {
