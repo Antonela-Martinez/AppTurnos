@@ -1,0 +1,10 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+	<body>
+		<form id="reservaForm" th:object="${form}" th:action="@{/reserva/iniciar" method="post">
+		<input id="username" th:field="*{username}" />
+		<button id="iniciarBtn" type="submit" th:text="#{reserva.btn}"></button>
+		</form>
+	</body>
+</html>
