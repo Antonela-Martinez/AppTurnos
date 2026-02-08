@@ -20,17 +20,17 @@
                     <span class="menu-icon">📊</span>
                     <span class="menu-text">Dashboard</span>
                 </a>
-                <a href="#" class="menu-item" data-section="appointments">
+                <a th:href="@{/admin/reserva}" class="menu-item" data-section="appointments">
                     <span class="menu-icon">📅</span>
-                    <span class="menu-text">Agenda</span>
+                    <span class="menu-text" th:text="#{menu.admin.turnos}"></span>
                 </a>
-                <a href="#" class="menu-item" data-section="services">
+                <a th:href="@{/admin/service}" class="menu-item" data-section="services">
                     <span class="menu-icon">✂️</span>
-                    <span class="menu-text">Servicios</span>
+                    <span class="menu-text" th:text="#{menu.admin.servicios}"></span>
                 </a>
-                <a href="#" class="menu-item" data-section="professionals">
+                <a th:href="@{/admin/users}" class="menu-item" data-section="professionals">
                     <span class="menu-icon">👥</span>
-                    <span class="menu-text">Profesionales</span>
+                    <span class="menu-text" th:text="#{menu.admin.profesional}"></span>
                 </a>
                 <a href="#" class="menu-item" data-section="settings">
                     <span class="menu-icon">⚙️</span>

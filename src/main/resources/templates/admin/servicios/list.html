@@ -4,13 +4,17 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 	  xmlns:th="http://www.thymeleaf.org"
 	  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layout2}">
-	
+	  
+
 	<body>
 		<div layout:fragment="content2">
-			<h1 th:text="#{mensaje.bienvenida.dash}"></h1>
-	
-
-		</div>
 		
+			<h3 th:text="#{menu.admin.servicios}"></h3>
+			listado de servicios
+			
+			<a th:href="@{/admin/service/edit}" th:text="#{service.create.btn}"></a>
+		
+		</div>
+			
 	</body>
 </html>

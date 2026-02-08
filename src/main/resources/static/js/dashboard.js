@@ -116,16 +116,16 @@ function getStatusBadge(status) {
 }
 
 // Toggle sidebar
-function toggleSidebar() {
+/*function toggleSidebar() {
     const sidebar = document.getElementById('sidebar');
     sidebar.classList.toggle('collapsed');
-}
+}*/
 
 // ========== ACCIONES DE TURNOS ==========
-function viewAppointment(id) {
-    const appointment = appointments.find(a => a.id === id);
-    alert(`📋 Detalles del Turno #${id}:\n\nCliente: ${appointment.client}\nServicio: ${appointment.service}\nHora: ${appointment.time}\nProfesional: ${appointment.professional}\nEstado: ${appointment.status}`);
-}
+//function viewAppointment(id) {
+   // const appointment = appointments.find(a => a.id === id);
+   // alert(`📋 Detalles del Turno #${id}:\n\nCliente: ${appointment.client}\nServicio: ${appointment.service}\nHora: ${appointment.time}\nProfesional: ${appointment.professional}\nEstado: ${appointment.status}`);
+//}
 
 function editAppointment(id) {
     alert(`✏️ Editar turno #${id}\n\nEsta funcionalidad abrirá un modal de edición.`);

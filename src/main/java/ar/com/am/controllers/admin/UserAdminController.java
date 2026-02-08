@@ -4,11 +4,12 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
-public class ReservaAdminController {
+public class UserAdminController {
 	
-	private static final String PATH_PAGES_URL = "/admin/reservas";
-	private static final String PATH_CONTEXT_URL = "/admin/reserva";
+	private static final String PATH_PAGES_URL = "/admin/users";
+	private static final String PATH_CONTEXT_URL = "/admin/users";
 
+	
 	@GetMapping(value = PATH_CONTEXT_URL)
 	public String init () {
 		return PATH_PAGES_URL + "/list";
@@ -18,6 +19,5 @@ public class ReservaAdminController {
 	public String edit () {
 		return PATH_PAGES_URL + "/form";
 	}
-	
 	
 }
