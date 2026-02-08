@@ -1,0 +1,56 @@
+ <!DOCTYPE html>
+
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	  xmlns:th="http://www.thymeleaf.org"
+	  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layout2}">
+ 
+ <!-- SIDEBAR -->
+        <aside th:fragment="sidebar" class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <div class="logo">
+                    <span class="logo-icon">✂️</span>
+                    <span class="logo-text">BeautyTurn</span>
+                </div>
+                <button class="toggle-btn" id="toggleBtn" onclick="toggleSidebar()">☰</button>
+            </div>
+
+            <nav class="sidebar-menu">
+                <a href="#" class="menu-item active" data-section="dashboard">
+                    <span class="menu-icon">📊</span>
+                    <span class="menu-text">Dashboard</span>
+                </a>
+                <a href="#" class="menu-item" data-section="appointments">
+                    <span class="menu-icon">📅</span>
+                    <span class="menu-text">Agenda</span>
+                </a>
+                <a href="#" class="menu-item" data-section="services">
+                    <span class="menu-icon">✂️</span>
+                    <span class="menu-text">Servicios</span>
+                </a>
+                <a href="#" class="menu-item" data-section="professionals">
+                    <span class="menu-icon">👥</span>
+                    <span class="menu-text">Profesionales</span>
+                </a>
+                <a href="#" class="menu-item" data-section="settings">
+                    <span class="menu-icon">⚙️</span>
+                    <span class="menu-text">Configuración</span>
+                </a>
+            </nav>
+
+            <div class="sidebar-footer">
+                <div class="user-profile">
+                    <div class="user-avatar">AV</div>
+                    <div class="user-info">
+                        <h4>Admin</h4>
+                        <p>admin@beautyturn.com</p>
+                    </div>
+                </div>
+                <button class="logout-btn" onclick="logout()">
+                    <span>🚪</span>
+                    <span class="menu-text">Cerrar Sesión</span>
+                </button>
+            </div>
+        </aside>
+        
+</html>

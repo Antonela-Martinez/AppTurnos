@@ -6,16 +6,17 @@ import org.junit.jupiter.api.Test;
 
 import ar.com.am.clases.Reserva;
 import ar.com.am.helper.ReservaHelper;
+import ar.com.am.helper.UsuarioHelper;
 
 public class ReservaEntityTest {
 	
-/*	@Test
+	@Test
 	public void testReservaValida() {
 			Reserva r = ReservaHelper.createReservaValida();
 			r.setCliente(UsuarioHelper.createValidClient());
 			Reserva reserva = ReservaHelper.createReservaValida();
 			assertEquals(r.getCliente(), reserva.getCliente());
-	}*/
+	}
 	
 	@Test
 	public void  testReservaClienteNull() {

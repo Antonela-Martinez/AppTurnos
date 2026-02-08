@@ -142,9 +142,9 @@ public abstract class Usuario extends Keyed {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
+       // if (this == o) return true;
         if (!(o instanceof Usuario)) return false;
-        if (!super.equals(o)) return false;
+       // if (!super.equals(o)) return false;
 
         Usuario u = (Usuario) o;
         return this.dni.equals(u.getDni())

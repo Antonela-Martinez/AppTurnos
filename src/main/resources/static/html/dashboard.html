@@ -3,10 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BeautyTurn - Panel Admin</title>
-    <style>
-        
-    </style>
+    <title>BeautyTurn - Dashboard Admin</title>
+    <link rel="stylesheet" href = "../css/dashboard.css">
 </head>
 <body>
     <div class="dashboard">
@@ -14,71 +12,67 @@
         <aside class="sidebar" id="sidebar">
             <div class="sidebar-header">
                 <div class="logo">
-                    <span class="logo-icon">💅</span>
+                    <span class="logo-icon">✂️</span>
                     <span class="logo-text">BeautyTurn</span>
                 </div>
-                <button class="toggle-btn" id="toggleSidebar">
-                    <span id="toggleIcon">✕</span>
-                </button>
+                <button class="toggle-btn" id="toggleBtn" onclick="toggleSidebar()">☰</button>
             </div>
 
-            <nav class="nav-menu">
-                <a href="#" class="nav-item active" data-section="dashboard">
-                    <span class="nav-icon">📊</span>
-                    <span class="nav-text">Dashboard</span>
+            <nav class="sidebar-menu">
+                <a href="#" class="menu-item active" data-section="dashboard">
+                    <span class="menu-icon">📊</span>
+                    <span class="menu-text">Dashboard</span>
                 </a>
-                <a href="#" class="nav-item" data-section="appointments">
-                    <span class="nav-icon">📅</span>
-                    <span class="nav-text">Agenda</span>
+                <a href="#" class="menu-item" data-section="appointments">
+                    <span class="menu-icon">📅</span>
+                    <span class="menu-text">Agenda</span>
                 </a>
-                <a href="#" class="nav-item" data-section="services">
-                    <span class="nav-icon">✂️</span>
-                    <span class="nav-text">Servicios</span>
+                <a href="#" class="menu-item" data-section="services">
+                    <span class="menu-icon">✂️</span>
+                    <span class="menu-text">Servicios</span>
                 </a>
-                <a href="#" class="nav-item" data-section="professionals">
-                    <span class="nav-icon">👥</span>
-                    <span class="nav-text">Profesionales</span>
+                <a href="#" class="menu-item" data-section="professionals">
+                    <span class="menu-icon">👥</span>
+                    <span class="menu-text">Profesionales</span>
                 </a>
-                <a href="#" class="nav-item" data-section="settings">
-                    <span class="nav-icon">⚙️</span>
-                    <span class="nav-text">Configuración</span>
+                <a href="#" class="menu-item" data-section="settings">
+                    <span class="menu-icon">⚙️</span>
+                    <span class="menu-text">Configuración</span>
                 </a>
             </nav>
 
             <div class="sidebar-footer">
-                <div class="user-info">
+                <div class="user-profile">
                     <div class="user-avatar">AV</div>
-                    <div class="user-details">
-                        <div class="user-name">Admin</div>
-                        <div class="user-email">admin@beautyturn.com</div>
+                    <div class="user-info">
+                        <h4>Admin</h4>
+                        <p>admin@beautyturn.com</p>
                     </div>
                 </div>
-                <button class="logout-btn" id="logoutBtn">
+                <button class="logout-btn" onclick="logout()">
                     <span>🚪</span>
-                    <span class="nav-text">Cerrar Sesión</span>
+                    <span class="menu-text">Cerrar Sesión</span>
                 </button>
             </div>
         </aside>
 
         <!-- MAIN CONTENT -->
         <main class="main-content">
-            <!-- HEADER -->
-            <header class="top-header">
-                <div class="header-title">
-                    <h1>Dashboard</h1>
+            <header class="header">
+                <div class="header-left">
+                    <h2>Dashboard</h2>
                     <p>Bienvenida, Admin</p>
                 </div>
-                <button class="new-appointment-btn" id="newAppointmentBtn">
+                <button class="btn-new-appointment" onclick="newAppointment()">
                     <span>➕</span>
                     <span>Nuevo Turno</span>
                 </button>
             </header>
 
-            <!-- CONTENT -->
             <div class="content-area">
                 <!-- STATS CARDS -->
                 <div class="stats-grid">
-                    <div class="stat-card">
+                    <div class="stat-card fade-in">
                         <div class="stat-header">
                             <div class="stat-icon blue">📅</div>
                             <span class="stat-change">+3</span>
@@ -87,7 +81,7 @@
                         <div class="stat-value">12</div>
                     </div>
 
-                    <div class="stat-card">
+                    <div class="stat-card fade-in" style="animation-delay: 0.1s">
                         <div class="stat-header">
                             <div class="stat-icon green">👥</div>
                             <span class="stat-change">+12%</span>
@@ -96,7 +90,7 @@
                         <div class="stat-value">156</div>
                     </div>
 
-                    <div class="stat-card">
+                    <div class="stat-card fade-in" style="animation-delay: 0.2s">
                         <div class="stat-header">
                             <div class="stat-icon purple">✂️</div>
                             <span class="stat-change">+2</span>
@@ -105,7 +99,7 @@
                         <div class="stat-value">15</div>
                     </div>
 
-                    <div class="stat-card">
+                    <div class="stat-card fade-in" style="animation-delay: 0.3s">
                         <div class="stat-header">
                             <div class="stat-icon pink">💰</div>
                             <span class="stat-change">+18%</span>
@@ -116,13 +110,13 @@
                 </div>
 
                 <!-- APPOINTMENTS TABLE -->
-                <div class="appointments-section">
+                <div class="appointments-section fade-in" style="animation-delay: 0.4s">
                     <div class="section-header">
                         <div class="section-title">
                             <span class="section-title-icon">📅</span>
-                            <h2>Turnos de Hoy</h2>
+                            <span>Turnos de Hoy</span>
                         </div>
-                        <span class="section-date">Martes, 01 de Febrero 2025</span>
+                        <div class="date-display" id="currentDate"></div>
                     </div>
 
                     <div class="table-container">
@@ -144,29 +138,17 @@
                         </table>
                     </div>
 
-                    <div class="table-footer">
+                    <div class="section-footer">
                         <span class="footer-info">Mostrando <span id="appointmentCount">0</span> de 12 turnos</span>
-                        <a href="#" class="view-all-link">Ver todos los turnos →</a>
+                        <a href="#" class="view-all-btn">
+                            Ver todos los turnos →
+                        </a>
                     </div>
                 </div>
             </div>
         </main>
     </div>
-
-    <!-- MODAL DETALLE TURNO -->
-    <div class="modal" id="detailModal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h3>Detalle del Turno</h3>
-                <button class="close-modal" id="closeModal">✕</button>
-            </div>
-            <div id="modalBody">
-                <!-- Se llenará dinámicamente -->
-            </div>
-        </div>
-    </div>
-
 	<script type="text/javascript" src="../js/dashboard.js"></script>
-  			
-  </body>
-</html>         
+
+</body>
+</html>

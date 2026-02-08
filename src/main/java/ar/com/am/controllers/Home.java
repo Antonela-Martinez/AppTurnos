@@ -8,7 +8,12 @@ public class Home {
 	
 	@GetMapping("/")
 	public String home() {
-		return"Home";
+		return"home";
+	}
+	
+	@GetMapping("/beauty")
+	public String bienvenida() {
+		return"beauty";
 	}
 
 }

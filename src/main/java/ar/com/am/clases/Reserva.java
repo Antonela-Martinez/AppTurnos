@@ -159,7 +159,7 @@ public class Reserva extends Keyed {
 	
 	@Override
 	public boolean equals(Object o) {
-	    if (this == o) return true; // misma referencia, atajo rápido
+	    //if (this == o) return true; // misma referencia, atajo rápido
 	    if (!(o instanceof Reserva)) return false; // distinto tipo
 	    //falta id
 	    Reserva r = (Reserva) o;

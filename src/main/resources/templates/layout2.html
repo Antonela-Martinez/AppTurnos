@@ -1,0 +1,41 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-4.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	  xmlns:th="http://www.thymeleaf.org"
+	  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+>
+	<head>
+	    <meta charset="UTF-8">
+	    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	    <title>BeautyTurn - Panel Admin</title>
+	    <link rel="stylesheet" th:href ="@{/css/dashboard.css}" />
+	</head>
+	
+	<body>
+		<div class="dashboard">
+        <div th:replace="fragments/sidebar.html :: sidebar"></div>
+
+        <!-- MAIN CONTENT -->
+        <main class="main-content">
+            <header class="header">
+                <div class="header-left">
+                    <h2>Dashboard</h2>
+                    <p>Bienvenida, Admin</p>
+                </div>
+                <button class="btn-new-appointment" onclick="newAppointment()">
+                    <span>➕</span>
+                    <span>Nuevo Turno</span>
+                </button>
+            </header>
+		
+			<div layout:fragment="content2">
+				
+			</div>
+				
+		 </main>
+		</div>
+		<script type="text/javascript" th:src="@{/js/dashboard.js}"></script>
+			
+	</body>
+</html>
