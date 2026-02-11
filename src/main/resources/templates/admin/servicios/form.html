@@ -6,10 +6,32 @@
 	  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layout2}">
 	
 	<body>
-		<div layout:fragment="content2">
-			<h1 th:text="#{menu.admin.servicios}"></h1>
-			formulario servicios
+		<div layout:fragment="content2" class="p-3 m-2">
+			<h3 th:text="#{menu.admin.servicios}"></h3>
 			
+			<form id= createUserForm class="row g-3" th:object="${form}" th:action="@{/admin/service/save}" method="post">
+				<div class="col-12">
+				    <label for="inputDni" class="form-label">Nombre</label>
+				    <input type="text" th:field="*{nombre}" class="form-control" id="inputDni" placeholder="capping">
+				</div>
+				<div class="col-12">
+				    <label for="inputTelefono" class="form-label">Descripción</label>
+				    <textarea id="inputDescripcion" th:field="*{descripcion}" class="form-control"  rows="4" placeholder="Escribe aquí la descripción..."></textarea>
+				</div>
+				<div class="col-md-6">
+				  	<label for="inputApellido" class="form-label">Precio</label>
+				    <input type="number" th:field="*{precio}" class="form-control" id="inputApellido">
+				</div>
+
+				<div class="col-md-2">
+				    <label for="inputNombre" class="form-label">Duración</label>
+				    <input type="number" th:field="*{duracion}" class="form-control" id="inputNombre">
+			  	</div>
+				<div class="d-flex justify-content-start">
+				<button id="saveBtn" class="btn btn-secondary" type="submit" th:text="#{save.btn}"></button>
+				<button id="cancelBtn" class="btn btn-secondary ms-2"type="submit" th:text="#{cancel.btn}"></button>
+				</div>
+			</form>
 	
 
 		</div>

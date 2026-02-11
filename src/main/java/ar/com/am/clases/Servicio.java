@@ -1,5 +1,7 @@
 package ar.com.am.clases;
 
+
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;

@@ -6,11 +6,40 @@
 	  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layout2}">
 	
 	<body>
-		<div layout:fragment="content2">
-			<h1 th:text="#{menu.admin.profesional}"></h1>
-			formulario profesional
+		<div layout:fragment="content2" class="p-3">
+			<h2 th:text="#{menu.admin.profesional}"></h2>
 			
-	
+			<form id= createUserForm class="row g-3" th:object="${form}" th:action="@{/admin/users/save}" method="post">
+				<div class="col-md-6">
+				    <label for="inputDni" class="form-label">DNI</label>
+				    <input type="number" th:field="*{dni}" class="form-control" id="inputDni" placeholder="35765987">
+				</div>
+				<div class="col-md-6">
+				    <label for="inputTelefono" class="form-label">Telefono</label>
+				    <input type="text" th:field="*{telefono}" class="form-control" id="inputTelefono" placeholder="223-5789654">
+				</div>
+				<div class="col-md-6">
+				    <label for="inputNombre" class="form-label">Nombre</label>
+				    <input type="text" th:field="*{nombre}" class="form-control" id="inputNombre">
+			  	</div>
+				<div class="col-md-6">
+				  	<label for="inputApellido" class="form-label">Apellido</label>
+				    <input type="text" th:field="*{apellido}" class="form-control" id="inputApellido">
+				</div>
+				<div class="col-md-6">
+				    <label for="inputEmail4" class="form-label">Email</label>
+				    <input type="email" th:field="*{email}" class="form-control" id="inputEmail4">
+			  	</div>
+				<div class="col-md-6">
+				  	<label for="inputPassword4" class="form-label">Password</label>
+				    <input type="password" th:field="*{clave}" class="form-control" id="inputPassword4">
+				</div>
+
+				<div class="d-flex justify-content-start">
+				<button id="saveBtn" class="btn btn-secondary" type="submit" th:text="#{save.btn}"></button>
+				<button id="cancelBtn" class="btn btn-secondary ms-2"type="submit" th:text="#{cancel.btn}"></button>
+				</div>
+			</form>
 
 		</div>
 		

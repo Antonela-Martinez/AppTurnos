@@ -1,5 +1,6 @@
 package ar.com.am.servicios;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,6 +30,11 @@ public class UserServiceImp implements UserService{
 	public Usuario obtenerUsuario(Long id) {
 		Optional<Usuario> user = this.repository.findById(id);
 		return user.get();
+	}
+
+	@Override
+	public List<Usuario> listAll() {
+		return this.repository.findAll();
 	}
 
 	

@@ -1,5 +1,7 @@
 package ar.com.am.servicios;
 
+import java.util.List;
+
 import ar.com.am.clases.Usuario;
 
 public interface UserService {
@@ -9,4 +11,6 @@ public interface UserService {
 	public void guardarUsuario(Usuario u);
 	
 	//public boolean existsUser(String email);
+	
+	public List<Usuario> listAll();
 }
