@@ -11,20 +11,20 @@
 			
 			<form id= createUserForm class="row g-3" th:object="${form}" th:action="@{/admin/service/save}" method="post">
 				<div class="col-12">
-				    <label for="inputDni" class="form-label">Nombre</label>
+				    <label for="inputDni" th:text="#{col.nombre}" class="form-label"></label>
 				    <input type="text" th:field="*{nombre}" class="form-control" id="inputDni" placeholder="capping">
 				</div>
 				<div class="col-12">
-				    <label for="inputTelefono" class="form-label">Descripción</label>
+				    <label for="inputTelefono" th:text="#{col.description}" class="form-label"></label>
 				    <textarea id="inputDescripcion" th:field="*{descripcion}" class="form-control"  rows="4" placeholder="Escribe aquí la descripción..."></textarea>
 				</div>
 				<div class="col-md-6">
-				  	<label for="inputApellido" class="form-label">Precio</label>
+				  	<label for="inputApellido" th:text="#{col.precio}" class="form-label"></label>
 				    <input type="number" th:field="*{precio}" class="form-control" id="inputApellido">
 				</div>
 
 				<div class="col-md-2">
-				    <label for="inputNombre" class="form-label">Duración</label>
+				    <label for="inputNombre" th:text="#{col.duracion}" class="form-label"></label>
 				    <input type="number" th:field="*{duracion}" class="form-control" id="inputNombre">
 			  	</div>
 				<div class="d-flex justify-content-start">

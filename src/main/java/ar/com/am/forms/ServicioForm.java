@@ -8,6 +8,8 @@ public class ServicioForm {
 	private int precio;
 	private String estado;
 	private String duracion;
+	
+	
 	public String getNombre() {
 		return nombre;
 	}

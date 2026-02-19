@@ -12,15 +12,17 @@ import ar.com.am.repositorios.BookingRepository;
 public class BookingServiceImp implements BookingService {
 	
 	@Autowired
-	private BookingRepository repositoryB;
+	private BookingRepository repository;
 	
 	public void guardarReserva (Reserva r) {
-		this.repositoryB.save(r);
+		this.repository.save(r);
 	}
 
 	@Override
 	public Reserva obtenerReserva(Long id) {
-		Optional<Reserva> user = this.repositoryB.findById(id);
+		Optional<Reserva> user = this.repository.findById(id);
 		return user.get();
 	}
+	
+
 }

@@ -8,11 +8,38 @@
 
 	<body>
 		<div layout:fragment="content2">
-		
 			<h3 th:text="#{menu.admin.servicios}"></h3>
-			listado de servicios
-			
-			<a th:href="@{/admin/service/edit}" th:text="#{service.create.btn}"></a>
+		<div class="card">
+			<div class="card-body">
+				<h4 th:text="#{admin.servicio.list.title}" class="card-title"></h4>
+				<p class="card-description">
+					<a th:href="@{/admin/service/edit}" th:text="#{service.create.btn}"></a>
+				</p> 
+				<div class="table-responsive">
+					<table class="table table-hover">
+					  <thead>
+					    <tr>
+					      <th th:text="#{col.id}"></th>
+					      <th th:text="#{col.nombre}"></th>
+					      <th th:text="#{col.description}"></th>
+					      <th th:text="#{col.precio}"></th>
+						  <th th:text="#{col.duracion}"></th>
+					    </tr>
+					  </thead>
+					  <tbody>
+					    <tr>
+					      <th th:each="servicio : ${listado}"></th>
+					      <td th:text="${servicio.id}"></td>
+					      <td th:text="${servicio.nombre}"></td>
+					      <td th:text="${servicio.descripcion}"></td>
+					      <td th:text="${servicio.precio}"></td>
+					      <td th:text="${servicio.duracion}"></td>
+					    </tr>
+					  </tbody>
+					</table>
+				</div>
+			</div>
+		</div>	
 		
 		</div>
 			

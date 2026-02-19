@@ -17,6 +17,7 @@ import ar.com.am.servicios.UserService;
 
 @Controller
 public class UserAdminController {
+	private static final String LIST_ATTRIBUTE = "listado";
 	private static final String FORM_ATTRIBUTE = "form";
 	private static final String PATH_PAGES_URL = "/admin/users";
 	private static final String PATH_CONTEXT_URL = "/admin/users";
@@ -25,8 +26,9 @@ public class UserAdminController {
 
 	
 	@GetMapping(value = PATH_CONTEXT_URL)
-	public String init () {
+	public String init (Model model) {
 		List<Usuario> usuarios = this.servicio.listAll();
+		model.addAttribute(LIST_ATTRIBUTE,usuarios);
 		return PATH_PAGES_URL + "/list";
 	}
 	
