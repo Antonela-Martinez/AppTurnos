@@ -36,7 +36,7 @@ public class UserRepositoryTest {
 		profesional.setApellido("Diaz");
         profesional.setAcceso(UsuarioHelper.creatDatosAccesoValido());
         profesional.setTelefono(224398989);
-        profesional.setIsAdmin("PROFESIONAL");
+        //profesional.setIsAdmin("PROFESIONAL");
         
         this.repository.save(profesional);
 		

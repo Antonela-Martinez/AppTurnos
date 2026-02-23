@@ -49,6 +49,23 @@ public class ReservaController {
 		long telefono = formulario.getTelefono();
 		String email = formulario.getEmail();
 		
+	
+	    Cliente cliente = userService.getByDni(dni);
+
+	    if (cliente == null) {
+	        // Si no existe, lo creo
+	        cliente = new Cliente(dni, nombre, apellido, telefono, email);
+	        userService.guardarUsuario(cliente); // persistir el nuevo cliente
+	    } else {
+	        // Si existe, podés actualizar sus datos si querés
+	        cliente.setNombre(nombre);
+	        cliente.setApellido(apellido);
+	        cliente.setTelefono(telefono);
+	        cliente.setEmail(email);
+	        userService.guardarUsuario(cliente); // opcional, si querés guardar cambios
+	    }
+
+		
 		Servicio servicio = servicioService.obtenerServicio(1L);
 		Profesional profesional = (Profesional) userService.obtenerUsuario(4L);
 		
@@ -58,7 +75,6 @@ public class ReservaController {
 		LocalDate fecha = formulario.getFecha();
 		int hora = 14; // formulario.getHora();
 		
-		Cliente cliente = new Cliente(dni,nombre,apellido,telefono,email);
 		Reserva reserva = new Reserva(cliente,profesional,servicio,fecha,hora);
 		
 		this.servicio.guardarReserva(reserva);

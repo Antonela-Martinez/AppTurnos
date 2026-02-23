@@ -41,7 +41,7 @@ public class UserServiceTest {
 		profesional.setApellido("Mendez");
         profesional.setAcceso(UsuarioHelper.creatDatosAccesoValido());
         profesional.setTelefono(224567777);
-        profesional.setIsAdmin("PROFESIONAL");
+        //profesional.setIsAdmin("PROFESIONAL");
         
         this.servicio.guardarUsuario(profesional);
 		

@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import ar.com.am.clases.Servicio;
 import ar.com.am.forms.ServicioForm;
@@ -32,20 +33,44 @@ public class ServiceAdminController {
 
 	
 	@GetMapping(value = PATH_CONTEXT_URL + "/edit")
-	public String edit (Model model) {
-		model.addAttribute(FORM_ATTRIBUTE, new ServicioForm());
+	public String edit (Model model, @RequestParam(name = "id" , defaultValue = "-1") Long id) {
+		ServicioForm formulario = new ServicioForm();
+		
+			if(id != null &&  id > 0) {
+				Servicio servicio = this.servicio.obtenerServicio(id);
+				
+				formulario.setId(servicio.getId());
+				formulario.setNombre(servicio.getNombre());
+				formulario.setDescripcion(servicio.getDescripcion());
+				formulario.setPrecio(servicio.getPrecio());
+				formulario.setDuracion(servicio.getDuracion());
+				formulario.setEstado(servicio.getEstado());
+			}
+			
+		model.addAttribute(FORM_ATTRIBUTE, formulario);
 		return PATH_PAGES_URL + "/form";
 	}
 	
 	@PostMapping(value = PATH_CONTEXT_URL + "/save")
 	public String save (@ModelAttribute(name = FORM_ATTRIBUTE) ServicioForm formulario) {
+		Servicio servicio;
 		String nombre = formulario.getNombre();
 		String descripcion = formulario.getDescripcion();
 		int precio = formulario.getPrecio();
-		String estado = formulario.getEstado();
-		String duracion = formulario.getDuracion();
+		int duracion = formulario.getDuracion();
+		String estado = "ACTIVO";
 		
-		Servicio servicio = new Servicio(nombre,precio);
+		if(formulario.esCreacion()) {
+			servicio = new Servicio(nombre,descripcion,precio,duracion,estado);
+		}else {
+			servicio = this.servicio.obtenerServicio(formulario.getId());
+			servicio.setNombre(nombre);
+			servicio.setDescripcion(descripcion);
+			servicio.setPrecio(precio);
+			servicio.setDuracion(duracion);
+			servicio.setEstado(estado);
+		}
+		
 		this.servicio.guardarServicio(servicio);
 		return "redirect:" + PATH_CONTEXT_URL;
 	}

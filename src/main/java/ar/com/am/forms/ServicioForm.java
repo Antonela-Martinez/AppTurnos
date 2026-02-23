@@ -3,13 +3,23 @@ package ar.com.am.forms;
 
 
 public class ServicioForm {
+	private Long id;
 	private String nombre;
 	private String descripcion;
 	private int precio;
 	private String estado;
-	private String duracion;
+	private int duracion;
 	
+	public boolean esCreacion() {
+		return this.id == null || this.id < 1;
+	}
 	
+	public Long getId() {
+		return id;
+	}
+	public void setId(Long id) {
+		this.id = id;
+	}
 	public String getNombre() {
 		return nombre;
 	}
@@ -34,10 +44,10 @@ public class ServicioForm {
 	public void setEstado(String estado) {
 		this.estado = estado;
 	}
-	public String getDuracion() {
+	public int getDuracion() {
 		return duracion;
 	}
-	public void setDuracion(String duracion) {
+	public void setDuracion(int duracion) {
 		this.duracion = duracion;
 	}
 	

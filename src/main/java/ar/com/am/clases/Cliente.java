@@ -13,6 +13,10 @@ public class Cliente extends Usuario {
 	@Column (name = "email")
 	private String email;
 	
+	protected Cliente() {
+		super();
+	}
+	
 	public Cliente(Long dni) {
 		super(dni);
 	}

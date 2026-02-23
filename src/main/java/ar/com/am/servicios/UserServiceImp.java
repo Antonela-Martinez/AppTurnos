@@ -6,6 +6,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import ar.com.am.clases.Cliente;
 import ar.com.am.clases.Usuario;
 import ar.com.am.repositorios.UserRepository;
 
@@ -28,13 +29,23 @@ public class UserServiceImp implements UserService{
 
 	@Override
 	public Usuario obtenerUsuario(Long id) {
-		Optional<Usuario> user = this.repository.findById(id);
-		return user.get();
+	    Optional<Usuario> user = this.repository.findById(id);
+	    if (user.isPresent()) {
+	        return user.get();
+	    } else {
+	        System.out.println("Usuario no encontrado con id: " + id);
+	        return null;
+	    }
 	}
 
 	@Override
-	public List<Usuario> listAll() {
+	public  List<Usuario> listAll() {
 		return this.repository.findAll();
+	}
+
+	@Override
+	public Cliente getByDni(Long dni) {
+	    return (Cliente) repository.findByDni(dni);
 	}
 
 	

@@ -7,7 +7,7 @@ public class UserForm {
 	private String email;
 	private String clave;
 	private long telefono;
-	//private String isAdmin;
+	private boolean isAdmin;
 	
 	
 	public Long getDni() {
@@ -57,14 +57,14 @@ public class UserForm {
 	public void setTelefono(long telefono) {
 		this.telefono = telefono;
 	}
-/*
-	public String getIsAdmin() {
+
+	public boolean getIsAdmin() {
 		return isAdmin;
 	}
 
-	public void setIsAdmin(String isAdmin) {
+	public void setIsAdmin(boolean isAdmin) {
 		this.isAdmin = isAdmin;
-	}*/
+	}
 	
 	
 	

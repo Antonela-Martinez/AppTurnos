@@ -23,15 +23,23 @@ public class Servicio extends Keyed{
 	@Column(name = "duracion")
 	private int duracion;
 	@Column(name = "estado")
-	private boolean estado;
+	private String estado;
 	
-	Servicio(){
+	protected Servicio(){
 		
 	}
 	
 	public Servicio(String n, int p) {
 		setNombre(n);
 		setPrecio(p); 
+	}
+	
+	public Servicio(String n, String d, int p, int dur, String e) {
+		setNombre(n);
+		setDescripcion(d);
+		setPrecio(p); 
+		setDuracion(dur);
+		setEstado(e);
 	}
 	
 	//NOMBRE SERVICIO
@@ -88,16 +96,16 @@ public class Servicio extends Keyed{
 	}
 
 	
-	public int getduracion() {
+	public int getDuracion() {
 		return this.duracion;
 	}
 	
 	//ESTADO
-	public void setEstado(boolean estado) {
+	public void setEstado(String estado) {
 	    this.estado = estado;
 	}
 	
-	public boolean getEstado() {
+	public String getEstado() {
 		return estado;
 	}
 
@@ -108,7 +116,7 @@ public class Servicio extends Keyed{
 	           && duracion > CERO;
 	}
 
-	public boolean estaActivo() {
+	public String estaActivo() {
 	    return estado;
 	}
 	

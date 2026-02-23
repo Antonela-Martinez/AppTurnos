@@ -8,7 +8,6 @@
 
 	<body>
 		<div layout:fragment="content2">
-			<h3 th:text="#{menu.admin.servicios}"></h3>
 		<div class="card">
 			<div class="card-body">
 				<h4 th:text="#{admin.servicio.list.title}" class="card-title"></h4>
@@ -24,16 +23,20 @@
 					      <th th:text="#{col.description}"></th>
 					      <th th:text="#{col.precio}"></th>
 						  <th th:text="#{col.duracion}"></th>
+						  <th th:text="#{col.actions}"></th>
 					    </tr>
 					  </thead>
 					  <tbody>
-					    <tr>
-					      <th th:each="servicio : ${listado}"></th>
+					    <tr th:each="servicio : ${listado}">
 					      <td th:text="${servicio.id}"></td>
 					      <td th:text="${servicio.nombre}"></td>
 					      <td th:text="${servicio.descripcion}"></td>
 					      <td th:text="${servicio.precio}"></td>
 					      <td th:text="${servicio.duracion}"></td>
+					      <td>
+					      	<a th:href="@{/admin/service/edit?id=} + ${servicio.id}" th:text="#{service.edit.btn}"></a>
+					      </td>
+					      
 					    </tr>
 					  </tbody>
 					</table>

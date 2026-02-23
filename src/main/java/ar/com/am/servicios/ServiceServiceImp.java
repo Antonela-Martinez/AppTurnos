@@ -22,7 +22,12 @@ public class ServiceServiceImp implements ServiceService {
 	@Override
 	public Servicio obtenerServicio(Long id) {
 		Optional<Servicio> service = this.repository.findById(id);
-		return service.get();
+		if (service.isPresent()) {
+	        return service.get();
+	    } else {
+	        System.out.println("Servicio no encontrado con id: " + id);
+	        return null;
+	    }
 	
 	}
 

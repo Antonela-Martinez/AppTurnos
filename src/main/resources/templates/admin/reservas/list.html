@@ -4,18 +4,41 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 	  xmlns:th="http://www.thymeleaf.org"
 	  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layout2}">
-	  
 
 	<body>
 		<div layout:fragment="content2">
-		
-			<h3 th:text="#{menu.admin.turnos}"></h3>
-			listado de turnos
-			
-			<a th:href="@{/admin/reserva/edit}" th:text="#{turno.create.btn}"></a>
-		
-		</div>
-
-			
+			<div class="card">
+				<div class="card-body">
+					<h4 th:text="#{admin.reserva.list.title}" class="card-title"></h4>
+					<p class="card-description">
+						<a th:href="@{/admin/reserva/edit}" th:text="#{turno.create.btn}"></a>
+					</p> 
+					<div class="table-responsive">
+						<table class="table table-hover">
+						  <thead>
+						    <tr>
+						      <th th:text="#{col.id}"></th>
+						      <th th:text="#{col.dni}"></th>
+						      <th th:text="#{col.servicio}"></th>
+						      <th th:text="#{col.profesional}"></th>
+						      <th th:text="#{col.fecha}"></th>
+							  <th th:text="#{col.hora}"></th>
+						    </tr>
+						  </thead>
+						  <tbody>
+						    <tr  th:each="reserva : ${listado}">
+						      <td th:text="${reserva.id}"></td>
+						      <td th:text="${reserva.dni}"></td>
+						      <td th:text="${reserva.servicio}"></td>
+						      <td th:text="${reserva.profesional}"></td>
+						      <td th:text="${reserva.fecha}"></td>
+						      <td th:text="${reserva.hora}"></td>
+						    </tr>
+						  </tbody>
+						</table>
+					</div>
+				</div>
+			</div>	
+		</div>		
 	</body>
 </html>

@@ -28,15 +28,14 @@
 					    </tr>
 					  </thead>
 					  <tbody>
-					    <tr>
-					      <th th:each="profesional : ${listado}"></th>
+					    <tr  th:each="profesional : ${listado}">
 					      <td th:text="${profesional.id}"></td>
 					      <td th:text="${profesional.dni}"></td>
 					      <td th:text="${profesional.nombre}"></td>
 					      <td th:text="${profesional.apellido}"></td>
 					      <td th:text="${profesional.telefono}"></td>
-					      <td th:text="${profesional.email}"></td>
-					      <td th:text="${profesional.clave}"></td>
+					      <td th:text="${profesional.acceso.emailUsr}"></td>
+					      <td th:text="${profesional.acceso.clave}"></td>
 					    </tr>
 					  </tbody>
 					</table>

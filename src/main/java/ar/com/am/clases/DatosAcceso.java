@@ -54,7 +54,7 @@ public class DatosAcceso extends Keyed{
 
 	
 	//CLAVE
-	public String getclave() {
+	public String getClave() {
 		return this.clave;
 	}
 	

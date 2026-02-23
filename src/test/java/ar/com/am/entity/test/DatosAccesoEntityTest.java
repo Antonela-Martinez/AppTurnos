@@ -16,7 +16,7 @@ public class DatosAccesoEntityTest {
     void testSetClaveValida() {
  		DatosAcceso ac = UsuarioHelper.creatDatosAccesoValido();
 	    ac.setClave(UsuarioHelper.createClave());
-	    assertEquals(UsuarioHelper.createClave(), ac.getclave());
+	    assertEquals(UsuarioHelper.createClave(), ac.getClave());
     }
 
     @Test

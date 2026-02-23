@@ -7,31 +7,41 @@
 	
 	<body>
 		<div layout:fragment="content2" class="p-3 m-2">
-			<h3 th:text="#{menu.admin.servicios}"></h3>
+			<th:block th:if="${form.esCreacion()}">
+				<h4 th:text="#{admin.servicio.create.title}" class="card-title"></h4>
+			</th:block>
+			<th:block th:unless="${form.esCreacion()}">
+				<h4 th:text="#{admin.servicio.edit.title(${form.id})}" class="card-title"></h4>
+			</th:block>
 			
-			<form id= createUserForm class="row g-3" th:object="${form}" th:action="@{/admin/service/save}" method="post">
+			<form id= createServiceForm class="row g-3" th:object="${form}" th:action="@{/admin/service/save}" method="post">
 				<div class="col-12">
-				    <label for="inputDni" th:text="#{col.nombre}" class="form-label"></label>
-				    <input type="text" th:field="*{nombre}" class="form-control" id="inputDni" placeholder="capping">
+				    <label for="inputNombre" th:text="#{col.nombre}" class="form-label"></label>
+				    <input type="text" th:field="*{nombre}" class="form-control" id="inputNombre" placeholder="capping">
 				</div>
 				<div class="col-12">
-				    <label for="inputTelefono" th:text="#{col.description}" class="form-label"></label>
+				    <label for="inputDescripcion" th:text="#{col.description}" class="form-label"></label>
 				    <textarea id="inputDescripcion" th:field="*{descripcion}" class="form-control"  rows="4" placeholder="Escribe aquí la descripción..."></textarea>
 				</div>
 				<div class="col-md-6">
-				  	<label for="inputApellido" th:text="#{col.precio}" class="form-label"></label>
-				    <input type="number" th:field="*{precio}" class="form-control" id="inputApellido">
+				  	<label for="inputPrecio" th:text="#{col.precio}" class="form-label"></label>
+				    <input type="number" th:field="*{precio}" class="form-control" id="inputPrecio">
 				</div>
 
 				<div class="col-md-2">
-				    <label for="inputNombre" th:text="#{col.duracion}" class="form-label"></label>
-				    <input type="number" th:field="*{duracion}" class="form-control" id="inputNombre">
+				    <label for="inputDuracion" th:text="#{col.duracion}" class="form-label"></label>
+				    <input type="number" th:field="*{duracion}" class="form-control" id="inputDuracion">
 			  	</div>
+			  	
+			  	<input id="id" type="hidden" th:field="*{id}">
+			  	
 				<div class="d-flex justify-content-start">
 				<button id="saveBtn" class="btn btn-secondary" type="submit" th:text="#{save.btn}"></button>
-				<button id="cancelBtn" class="btn btn-secondary ms-2"type="submit" th:text="#{cancel.btn}"></button>
+				<button id="cancelBtn" class="btn btn-secondary ms-2"type="button" th:text="#{cancel.btn}" onclick="$('#cancelForm').submit()"></button>
 				</div>
 			</form>
+			
+			<form id="cancelForm" class="row g-3" th:object="${form}" th:action="@{/admin/service}" method="get"></form>
 	
 
 		</div>

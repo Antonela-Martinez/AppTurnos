@@ -6,19 +6,45 @@
 	  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layout2}">
 	
 	<body>
-		<div layout:fragment="content2">
-			<h1 th:text="#{menu.admin.turnos}"></h1>
-			formulario turnos
+		<div layout:fragment="content2" class="p-3 m-2">
+			<th:block th:if="${form.esCreacion()}">
+				<h4 th:text="#{admin.servicio.create.title}" class="card-title"></h4>
+			</th:block>
+			<th:block th:unless="${form.esCreacion()}">
+				<h4 th:text="#{admin.servicio.edit.title(${form.id})}" class="card-title"></h4>
+			</th:block>
 			
-			<form id= editReservaForm th:object="${form}" th:action="@{}" method="get">
-				<input>
-				<button></button>
-			
-			</form>
-			
-	
+			<form id= editReservaForm class="row g-3" th:object="${form}" th:action="@{/admin/reserva/save}" method="post">
+				<div class="col-12">
+				    <label for="inputDni" th:text="#{col.dni}" class="form-label"></label>
+				    <input type="number" th:field="*{dni}" class="form-control" id="inputDni" placeholder="capping">
+				</div>
+				<div class="col-12">
+				    <label for="inputServicio" th:text="#{col.servicio}" class="form-label"></label>
+				    <textarea id="inputServicio" th:field="*{servicio}" class="form-control"  rows="4" ></textarea>
+				</div>
+				<div class="col-12">
+				  	<label for="inputProfesional" th:text="#{col.profesional}" class="form-label"></label>
+				    <input type="text" th:field="*{profesional}" class="form-control" id="inputApellido">
+				</div>
 
+				<div class="col-12">
+				    <label for="inputFecha" th:text="#{col.fecha}" class="form-label"></label>
+				    <input type="date" th:field="*{fecha}" class="form-control" id="inputFecha">
+			  	</div>
+			  	<div class="col-12">
+				    <label for="inputHora" th:text="#{col.hora}" class="form-label"></label>
+				    <input type="number" th:field="*{hora}" class="form-control" id="inputHora">
+			  	</div>
+			  	
+			  	<input id="id" type="hidden" th:field="*{id}">
+			  	
+				<div class="d-flex justify-content-start">
+					<button id="saveBtn" class="btn btn-secondary" type="submit" th:text="#{save.btn}"></button>
+					<button id="cancelBtn" class="btn btn-secondary ms-2"type="button" th:text="#{cancel.btn}" onclick="$('#cancelForm').submit()"></button>
+				</div>
+			</form>
+			<form id="cancelForm" class="row g-3" th:object="${form}" th:action="@{/admin/reserva}" method="get"></form>
 		</div>
-		
 	</body>
 </html>
