@@ -3,6 +3,7 @@ package ar.com.am.servicios;
 import java.util.List;
 
 import ar.com.am.clases.Servicio;
+import ar.com.am.dtos.ServicioDTO;
 
 
 public interface ServiceService {
@@ -11,7 +12,7 @@ public interface ServiceService {
 
 	public void guardarServicio(Servicio s);
 	
-	public List<Servicio> listAll();
+	public List<ServicioDTO> listAll();
 	
 
 }

@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import ar.com.am.clases.Servicio;
+import ar.com.am.dtos.ServicioDTO;
 import ar.com.am.forms.ServicioForm;
 import ar.com.am.servicios.ServiceService;
 
@@ -19,14 +20,14 @@ public class ServiceAdminController {
 	private static final String LIST_ATTRIBUTE = "listado";
 	private static final String FORM_ATTRIBUTE = "form";
 	private static final String PATH_PAGES_URL = "/admin/servicios";
-	private static final String PATH_CONTEXT_URL = "/admin/service";
+	private static final String PATH_CONTEXT_URL = "c";
 	@Autowired
 	private ServiceService servicio;
 	
 	
 	@GetMapping(value = PATH_CONTEXT_URL)
 	public String init (Model model) {
-		List<Servicio> servicios = this.servicio.listAll();
+		List<ServicioDTO> servicios = this.servicio.listAll();
 		model.addAttribute(LIST_ATTRIBUTE, servicios);
 		return PATH_PAGES_URL + "/list";
 	}

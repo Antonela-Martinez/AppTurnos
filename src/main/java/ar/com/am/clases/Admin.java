@@ -4,10 +4,14 @@ import jakarta.persistence.DiscriminatorValue;
 import jakarta.persistence.Entity;
 //import jakarta.persistence.DiscriminatorValue;
 
-//@Entity
+@Entity
 @DiscriminatorValue(value = Admin.DISCRIMINATOR_VALUE)
 public class Admin extends Profesional {
 	public static final String DISCRIMINATOR_VALUE = "ADMIN";
+	
+	protected Admin() {
+		super();
+	}
 
 	public Admin(Long dni, DatosAcceso acceso) {
 		super(dni, acceso);
