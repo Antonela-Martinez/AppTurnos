@@ -43,7 +43,7 @@ public class UsuarioHelper {
 	
 	
 	public final static Profesional createProfesionalValido () {
-		return new Profesional(VALID_USER_DNI,NOMBRE,APELLLIDO,TELEFONO,UsuarioHelper.creatDatosAccesoValido());
+		return new Profesional(VALID_USER_DNI,NOMBRE,APELLLIDO,TELEFONO,UsuarioHelper.creatDatosAccesoValido(),DISCRIMINADOR);
 	}
 	
 	public final static Cliente createValidClient () {

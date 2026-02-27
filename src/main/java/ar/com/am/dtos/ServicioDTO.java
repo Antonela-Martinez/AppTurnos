@@ -4,6 +4,8 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class ServicioDTO {
+	@JsonIgnore
+	private Long id;
 	@JsonProperty(value = "Servicio")
 	private String nombre;
 	@JsonIgnore
@@ -14,6 +16,12 @@ public class ServicioDTO {
 	private int duracion;
 	
 	
+	public Long getId() {
+		return id;
+	}
+	public void setId(Long id) {
+		this.id = id;
+	}
 	public String getNombre() {
 		return nombre;
 	}

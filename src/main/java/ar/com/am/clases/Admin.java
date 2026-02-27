@@ -17,8 +17,8 @@ public class Admin extends Profesional {
 		super(dni, acceso);
 	}
 	
-	public Admin(Long dni,String nombre, String apellido, long telefono, DatosAcceso acceso) {
-		super(dni, nombre, apellido, telefono,acceso);
+	public Admin(Long dni,String nombre, String apellido, long telefono, DatosAcceso acceso, String dis) {
+		super(dni, nombre, apellido, telefono,acceso,dis);
 	}
 
 }

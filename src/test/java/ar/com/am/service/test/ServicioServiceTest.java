@@ -20,5 +20,10 @@ public class ServicioServiceTest {
 		Servicio servicio = ServicioHelper.createServicioValido();
         this.servicio.guardarServicio(servicio);
 	}
+	
+	@Test
+	public void testListAllServicios() {
+        this.servicio.listAll();
+	}
 
 }

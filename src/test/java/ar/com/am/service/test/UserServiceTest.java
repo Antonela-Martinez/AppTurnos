@@ -37,15 +37,19 @@ public class UserServiceTest {
 	@Test
 	public void testSaveProfesionalSucces() {
 		Profesional profesional = UsuarioHelper.createProfesionalValido();
-		profesional.setNombre("Laura");
-		profesional.setApellido("Mendez");
+		profesional.setNombre("Monica");
+		profesional.setApellido("Diaz");
         profesional.setAcceso(UsuarioHelper.creatDatosAccesoValido());
-        profesional.setTelefono(224567777);
-        //profesional.setIsAdmin("PROFESIONAL");
+        profesional.setTelefono(224566777);
+        profesional.setIsAdmin("PROFESIONAL");
         
         this.servicio.guardarUsuario(profesional);
 		
 
+	}
+	
+	public void testListAllUsuarios() {
+		this.servicio.listAll();
 	}
 	
 

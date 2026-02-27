@@ -73,9 +73,9 @@ public class UserAdminController {
 		Profesional p;
 		
 			if(isAdmin) {
-				p = new Admin(dni,nombre,apellido,telefono,acceso);
+				p = new Admin(dni,nombre,apellido,telefono,acceso,"ADMIN");
 			}else {
-				p = new Profesional(dni,nombre,apellido,telefono,acceso);
+				p = new Profesional(dni,nombre,apellido,telefono,acceso,"PROFESIONAL");
 				
 			}
 		

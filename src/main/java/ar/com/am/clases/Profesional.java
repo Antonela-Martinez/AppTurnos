@@ -2,32 +2,23 @@ package ar.com.am.clases;
 
 
 import jakarta.persistence.CascadeType;
-import jakarta.persistence.DiscriminatorColumn;
-import jakarta.persistence.DiscriminatorType;
-import jakarta.persistence.DiscriminatorValue;
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.Inheritance;
-import jakarta.persistence.InheritanceType;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "PROFESIONALES")
-@Inheritance(strategy =InheritanceType.SINGLE_TABLE)
-//Discrimina si tiene que crear un objeto profesional o un objeto admin ??? hibernate nos ofrece los tipo de discriminador que pueden ser
-@DiscriminatorColumn(name="discriminator",discriminatorType = DiscriminatorType.STRING)
-@DiscriminatorValue(value = Profesional.DISCRIMINATOR_VALUE)
 public class Profesional extends Usuario {
 	public static final String ERROR_MESSAGE_EMPTY_ACCESO= "Los datos de acceso no pueden ser nulos";
 	public static final String ERROR_MESSAGE_INVALID = "Email o clave no son correctos";
-	public static final String DISCRIMINATOR_VALUE = "PROFESIONAL";
-	//@Column(name = "datos_acceso_id")
 	@OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "datos_acceso_id", referencedColumnName = "ID")
 	private DatosAcceso acceso;
-	//@Column(name = "discriminator")
-	//private String isAdmimn;
+	@Column(name = "discriminator")
+	private String isAdmimn;
+	
 	
 	protected Profesional(){
 		super();
@@ -38,10 +29,10 @@ public class Profesional extends Usuario {
 		setAcceso(acceso);
 	}
 	
-	public Profesional(Long dni,String nombre, String apellido, long telefono, DatosAcceso acceso) {
+	public Profesional(Long dni,String nombre, String apellido, long telefono, DatosAcceso acceso, String discriminador) {
 		super(dni, nombre, apellido, telefono);
 		setAcceso(acceso);
-		//setIsAdmin(discriminador);
+		setIsAdmin(discriminador);;
 	}
 	
 	//ACCESO
@@ -60,13 +51,13 @@ public class Profesional extends Usuario {
 	}
 	
 	//ISADMIN
-	/*public String getIsAdmin() {
+	public String getIsAdmin() {
 		return this.isAdmimn;
 	}
 	
 	public void setIsAdmin(String isAdmin) {
 		this.isAdmimn = isAdmin;
-	}*/
+	}
 	
 	
 	//METODOS DE VALIDACION

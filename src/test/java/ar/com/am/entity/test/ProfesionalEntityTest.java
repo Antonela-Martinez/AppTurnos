@@ -17,9 +17,6 @@ public class ProfesionalEntityTest extends UsuarioEntityTest<Profesional>{
 		return UsuarioHelper.createProfesionalValido();
 	}
 	
-	
-	
-	
 	@Test
 	public void testSetDatosAccesoValido() {
 		Profesional p = UsuarioHelper.createProfesionalValido();

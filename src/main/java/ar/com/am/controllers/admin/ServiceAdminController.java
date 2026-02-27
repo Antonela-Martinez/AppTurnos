@@ -20,7 +20,7 @@ public class ServiceAdminController {
 	private static final String LIST_ATTRIBUTE = "listado";
 	private static final String FORM_ATTRIBUTE = "form";
 	private static final String PATH_PAGES_URL = "/admin/servicios";
-	private static final String PATH_CONTEXT_URL = "c";
+	private static final String PATH_CONTEXT_URL = "/admin/service";
 	@Autowired
 	private ServiceService servicio;
 	
