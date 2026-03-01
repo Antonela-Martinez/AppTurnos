@@ -8,4 +8,9 @@ import ar.com.am.clases.Servicio;
 @Repository
 public interface ServiceRepository extends JpaRepository<Servicio, Long> {
 
+	public Servicio loadById(Long id);
+	
+	//public Servicio findById(Long id);
+
+	
 }

@@ -1,5 +1,6 @@
 package ar.com.am.servicios;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,6 +23,11 @@ public class BookingServiceImp implements BookingService {
 	public Reserva obtenerReserva(Long id) {
 		Optional<Reserva> user = this.repository.findById(id);
 		return user.get();
+	}
+
+	@Override
+	public List<Reserva> listAll() {
+		return this.repository.findAll();
 	}
 	
 
