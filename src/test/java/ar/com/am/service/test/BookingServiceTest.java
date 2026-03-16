@@ -12,6 +12,8 @@ import ar.com.am.clases.Servicio;
 import ar.com.am.helper.ReservaHelper;
 import ar.com.am.helper.UsuarioHelper;
 import ar.com.am.servicios.BookingService;
+import ar.com.am.servicios.ClienteService;
+import ar.com.am.servicios.ProfesionalService;
 import ar.com.am.servicios.ServiceService;
 import ar.com.am.servicios.UserService;
 
@@ -22,17 +24,19 @@ public class BookingServiceTest {
 	@Autowired
 	private BookingService servicio;
 	@Autowired
-	private UserService userService;
+	private ClienteService clienteService;
+	@Autowired
+	private ProfesionalService profesionalService;
 	@Autowired
 	private ServiceService servicioService;
 	
 	
 	@Test
 	public void testSaveReservaSucces() {
-		Profesional profesional = (Profesional) userService.obtenerUsuario(4L);
+		Profesional profesional = profesionalService.obtenerUsuario(4L);
 		Servicio servicio = servicioService.obtenerServicio(1L);
 		
-		Cliente cliente = this.userService.getByDni(1L);
+		Cliente cliente = this.clienteService.getByDni(1L);
 			if(cliente==null) {
 				cliente = UsuarioHelper.createValidClient();
 			}

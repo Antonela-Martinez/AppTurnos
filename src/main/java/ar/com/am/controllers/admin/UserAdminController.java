@@ -1,6 +1,5 @@
 package ar.com.am.controllers.admin;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,9 +12,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import ar.com.am.clases.Admin;
 import ar.com.am.clases.DatosAcceso;
 import ar.com.am.clases.Profesional;
-import ar.com.am.clases.Usuario;
 import ar.com.am.forms.UserForm;
-import ar.com.am.servicios.UserService;
+import ar.com.am.servicios.ProfesionalService;
 
 @Controller
 public class UserAdminController {
@@ -23,15 +21,17 @@ public class UserAdminController {
 	private static final String FORM_ATTRIBUTE = "form";
 	private static final String PATH_PAGES_URL = "/admin/users";
 	private static final String PATH_CONTEXT_URL = "/admin/users";
+	//@Autowired
+	//private UserService servicio;
 	@Autowired
-	private UserService servicio; 
+	private ProfesionalService servicioProf;
 
 	/*@GetMapping(value = PATH_CONTEXT_URL)
 	public String init (Model model) {
 		List<Usuario> usuarios = this.servicio.listAll();
 		model.addAttribute(LIST_ATTRIBUTE,usuarios);
 		return PATH_PAGES_URL + "/list";
-	}*/
+	}
 	
 	@GetMapping(value = PATH_CONTEXT_URL)
 	public String listarProfesionales(Model model) {
@@ -49,7 +49,15 @@ public class UserAdminController {
 
 		model.addAttribute(LIST_ATTRIBUTE,profesionales);
 		return PATH_PAGES_URL + "/list";
+	}*/
+	
+	@GetMapping(value = PATH_CONTEXT_URL)
+	public String listarProfesionales(Model model) {
+	    List<Profesional> profesionales = this.servicioProf.listAll();
+		model.addAttribute(LIST_ATTRIBUTE,profesionales);
+		return PATH_PAGES_URL + "/list";
 	}
+
 
 	
 	@GetMapping(value = PATH_CONTEXT_URL + "/edit")
@@ -79,7 +87,8 @@ public class UserAdminController {
 				
 			}
 		
-		this.servicio.guardarUsuario(p);
+		//this.servicio.guardarUsuario(p);
+		this.servicioProf.guardar(p);
 		return "redirect:" + PATH_CONTEXT_URL;
 	}
 	

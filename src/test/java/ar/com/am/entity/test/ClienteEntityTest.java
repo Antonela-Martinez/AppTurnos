@@ -20,20 +20,20 @@ public class ClienteEntityTest extends UsuarioEntityTest<Cliente>{
 	
 	@Test
 	public void testTieneDniSucces() {
-		Cliente c = UsuarioHelper.createValidClient();
+		Cliente c = crearUsuario();
 		assertTrue(c.tieneDni(UsuarioHelper.VALID_USER_DNI));
 	}
 	
 	@Test
 	public void testTieneDniFiler() {
-		Cliente c = UsuarioHelper.createValidClient();
+		Cliente c = crearUsuario();
 		assertFalse(c.tieneDni(11123123L));
 	}
 	
 	//TEST SET EMAIL
 		@Test
 	    void testSetEmailValida() {
-			Cliente c = UsuarioHelper.createValidClient();
+			Cliente c = crearUsuario();
 		    c.setEmail(UsuarioHelper.createEmail());
 		    String email = c.getEmail();
 		    assertEquals(email, c.getEmail());
@@ -42,7 +42,7 @@ public class ClienteEntityTest extends UsuarioEntityTest<Cliente>{
 	    @Test
 	    void testSetEmailNull() {
 	    	try {
-	    		Cliente c = UsuarioHelper.createValidClient();
+	    		Cliente c = crearUsuario();
 	    		c.setEmail(null);
 	    	}catch(IllegalArgumentException e){
 	    		assertEquals(Cliente.ERROR_MSG_EMAIL_INVALIDO, e.getMessage());
@@ -53,7 +53,7 @@ public class ClienteEntityTest extends UsuarioEntityTest<Cliente>{
 	    @Test
 	    void testSetEmailVacio() {
 	    	try {
-	    		Cliente c = UsuarioHelper.createValidClient();
+	    		Cliente c = crearUsuario();
 	    		c.setEmail(" ");
 	    	}catch(IllegalArgumentException e){
 	    		assertEquals(Cliente.ERROR_MSG_EMAIL_INVALIDO, e.getMessage());

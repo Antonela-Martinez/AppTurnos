@@ -1,7 +1,7 @@
 package ar.com.am.helper;
 
 import java.time.LocalDate;
-
+import java.util.Optional;
 
 import ar.com.am.clases.Cliente;
 import ar.com.am.clases.Profesional;
@@ -22,9 +22,9 @@ public class ReservaHelper {
 		return new Reserva(ReservaHelper.cliente,profesional,servicio,ReservaHelper.fecha,ReservaHelper.hora );
 	}
 	
-	public final static Reserva createReservaValida(Profesional prof, Servicio servicio, Cliente cliente) {
+	public final static Reserva createReservaValida(Profesional profesional, Servicio servicio, Cliente cliente) {
 		
-		return new Reserva(cliente,prof,servicio,ReservaHelper.fecha,ReservaHelper.hora );
+		return new Reserva(cliente,profesional,servicio,ReservaHelper.fecha,ReservaHelper.hora );
 	}
 
 

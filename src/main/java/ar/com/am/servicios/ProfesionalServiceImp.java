@@ -9,9 +9,10 @@ import ar.com.am.repositorios.ProfesionalRepository;
 
 
 @Service
-public class ProfesionalServiceImp extends UserServiceImp<Profesional,ProfesionalRepository> {
+public class ProfesionalServiceImp extends UserServiceImp<Profesional,ProfesionalRepository> implements ProfesionalService {
 	@Autowired
 	private ProfesionalRepository repository;
+
 
 
 

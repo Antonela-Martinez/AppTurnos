@@ -15,6 +15,8 @@ import ar.com.am.clases.Reserva;
 import ar.com.am.clases.Servicio;
 import ar.com.am.forms.ReservaForm;
 import ar.com.am.servicios.BookingService;
+import ar.com.am.servicios.ClienteService;
+import ar.com.am.servicios.ProfesionalService;
 import ar.com.am.servicios.ServiceService;
 import ar.com.am.servicios.UserService;
 
@@ -29,7 +31,9 @@ public class ReservaController {
 	@Autowired
 	private ServiceService servicioService;
 	@Autowired
-	private UserService userService;
+	private ProfesionalService profesionalService;
+	@Autowired
+	private ClienteService clienteService;
 	
 	@GetMapping(value = PATH_CONTEXT_URL + "/create")
 	public String create (Model model) {//para acceder al modelo de la capa de vista
@@ -50,24 +54,25 @@ public class ReservaController {
 		String email = formulario.getEmail();
 		
 	
-	    Cliente cliente = userService.getByDni(dni);
+	    Cliente cliente = clienteService.getByDni(dni);
 
 	    if (cliente == null) {
 	        // Si no existe, lo creo
 	        cliente = new Cliente(dni, nombre, apellido, telefono, email);
-	        userService.guardarUsuario(cliente); // persistir el nuevo cliente
+	       
 	    } else {
 	        // Si existe, podés actualizar sus datos si querés
 	        cliente.setNombre(nombre);
 	        cliente.setApellido(apellido);
 	        cliente.setTelefono(telefono);
 	        cliente.setEmail(email);
-	        userService.guardarUsuario(cliente); // opcional, si querés guardar cambios
 	    }
+	    
+	    clienteService.guardar(cliente);
 
 		
 		Servicio servicio = servicioService.obtenerServicio(1L);
-		Profesional profesional = (Profesional) userService.obtenerUsuario(4L);
+		Profesional profesional = profesionalService.obtenerUsuario(4L);
 		
 		//Servicio servicio = servicioService.obtenerServicio(formulario.getServicioId());
 		//Profesional profesional = (Profesional) userService.obtenerUsuario(formulario.getProfesionalId());

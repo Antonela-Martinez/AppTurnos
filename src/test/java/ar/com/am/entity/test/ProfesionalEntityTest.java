@@ -19,7 +19,7 @@ public class ProfesionalEntityTest extends UsuarioEntityTest<Profesional>{
 	
 	@Test
 	public void testSetDatosAccesoValido() {
-		Profesional p = UsuarioHelper.createProfesionalValido();
+		Profesional p = crearUsuario();
 		p.setAcceso(UsuarioHelper.creatDatosAccesoValido());
 		DatosAcceso acceso = p.getAcceso();
 		assertEquals(p.getAcceso(), acceso);
@@ -28,7 +28,7 @@ public class ProfesionalEntityTest extends UsuarioEntityTest<Profesional>{
 	@Test
 	public void testSetDatosAccesoNull() {
 		try {
-			Profesional p = UsuarioHelper.createProfesionalValido();
+			Profesional p = crearUsuario();
 			p.setAcceso(null);
 		}catch(IllegalArgumentException e) {
 			assertEquals(Profesional.ERROR_MESSAGE_EMPTY_ACCESO,e.getMessage());

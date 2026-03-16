@@ -14,7 +14,7 @@ public abstract class UserServiceImp <T extends Usuario, R extends UserRepositor
 	private R repository;
 	
 	
-	public void guardarUsuario(T usuario) {
+	public void guardar(T usuario) {
 		this.repository.save(usuario);//aca generamos un nivel de abstraccion entre el servicio y el repositorio
 	}
 
@@ -36,7 +36,19 @@ public abstract class UserServiceImp <T extends Usuario, R extends UserRepositor
 
 	@Override
 	public T getByDni(Long dni) {
-	    return repository.findByDni(dni);
+		List<T> listatest = repository.findByDni(dni);
+		if (listatest.isEmpty()) return null;
+		if (listatest.size() > 1) throw new RuntimeException("Mas d eun usuario con este dni");
+		
+	    return listatest.get(0);
+	}
+	
+	public T load(Long id) {
+		Optional<T> option = this.repository.findById(id);
+		if (option.isEmpty()) return null;
+		
+		return option.get();
+		
 	}
 
 

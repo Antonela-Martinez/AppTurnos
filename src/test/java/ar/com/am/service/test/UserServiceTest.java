@@ -5,49 +5,27 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ActiveProfiles;
 
-import ar.com.am.clases.Cliente;
-import ar.com.am.clases.Profesional;
-import ar.com.am.helper.UsuarioHelper;
+import ar.com.am.clases.Usuario;
 import ar.com.am.servicios.UserService;
 
-@SpringBootTest//va a ser un test que necesita todo el contexto de spring para que este atributo pueda inicializarse correctamente
-@ActiveProfiles("test")
-public class UserServiceTest {
+
+public abstract class UserServiceTest<T extends Usuario, S extends UserService<T>> {
 	//a traves de Sprin vamos a inyectar una instancia del servicio del usuario para inicializarlo
+	//@Autowired
+	//private UserService servicio; //voy a necesitar una instancia de este tipo de dato
 	@Autowired
-	private UserService servicio; //voy a necesitar una instancia de este tipo de dato
+	private S servicio;
 	
+	protected abstract T obtenerUsuario();
 	
 	@Test
 	public void testSaveClienteSucces() {
-		Cliente usuario = UsuarioHelper.createValidClient();
-		usuario.setNombre("Antonela");
-		usuario.setApellido("Martinez");
-        usuario.setEmail("antonela@test.com");
-        usuario.setTelefono(224567896);
-        
-        this.servicio.guardarUsuario(usuario);
-		
-        /*try {
-            this.servicio.guardarUsuario(usuario);
-         } catch (Exception e) {
-             e.printStackTrace();
-         }*/
+        T usuario = obtenerUsuario();
+        this.servicio.guardar(usuario);
 	}
-	
-	@Test
-	public void testSaveProfesionalSucces() {
-		Profesional profesional = UsuarioHelper.createProfesionalValido();
-		profesional.setNombre("Monica");
-		profesional.setApellido("Diaz");
-        profesional.setAcceso(UsuarioHelper.creatDatosAccesoValido());
-        profesional.setTelefono(224566777);
-        profesional.setIsAdmin("PROFESIONAL");
-        
-        this.servicio.guardarUsuario(profesional);
-		
 
-	}
+	
+	
 	
 	public void testListAllUsuarios() {
 		this.servicio.listAll();
