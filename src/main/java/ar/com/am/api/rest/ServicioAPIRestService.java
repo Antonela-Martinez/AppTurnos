@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import ar.com.am.clases.Servicio;
+
 import ar.com.am.dtos.ServicioDTO;
 import ar.com.am.forms.ServicioForm;
 import ar.com.am.servicios.ServiceService;

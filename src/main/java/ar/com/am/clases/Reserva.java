@@ -27,10 +27,10 @@ public class Reserva extends Keyed {
 	@OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "cliente_id", referencedColumnName = "ID")
 	private Cliente cliente;
-	@OneToOne(cascade = CascadeType.ALL)
+	@OneToOne
     @JoinColumn(name = "prof_id", referencedColumnName = "ID")
 	private Profesional profesional;
-	@OneToOne(cascade = CascadeType.ALL)
+	@OneToOne
     @JoinColumn(name = "servicio_id", referencedColumnName = "ID")
 	private Servicio servicio;
 	@Column(name = "fecha")
