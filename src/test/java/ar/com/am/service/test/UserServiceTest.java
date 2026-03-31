@@ -2,8 +2,6 @@ package ar.com.am.service.test;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.ActiveProfiles;
 
 import ar.com.am.clases.Usuario;
 import ar.com.am.servicios.UserService;
@@ -24,17 +22,8 @@ public abstract class UserServiceTest<T extends Usuario, S extends UserService<T
         this.servicio.guardar(usuario);
 	}
 
-	
-	
-	
 	public void testListAllUsuarios() {
 		this.servicio.listAll();
 	}
-	
-
-	
-
-
-
 
 }

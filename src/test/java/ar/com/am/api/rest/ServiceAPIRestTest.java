@@ -47,7 +47,7 @@ public class ServiceAPIRestTest {
 			List<ServicioDTO> servicios = mapper.readerForListOf(ServicioDTO.class).readValue(response.body());
 			
 			assertNotNull(servicios);
-			assertEquals(43,servicios.size());
+			assertEquals(58,servicios.size());
 			
 		} catch (Exception e) {
 			

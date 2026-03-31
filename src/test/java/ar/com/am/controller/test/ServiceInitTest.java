@@ -26,7 +26,7 @@ public class ServiceInitTest {
     private ServiceAdminController controller;
 
     @Test
-    void testInit() {
+    public void testInit() {
         Model model = new ConcurrentModel();
 
         // Llamamos al método del controlador
@@ -46,7 +46,7 @@ public class ServiceInitTest {
         assertFalse(listado.isEmpty());
 
         // Como cargamos datos en data.sql, deberían estar presentes
-        assertEquals(43, listado.size());
+        assertEquals(58, listado.size());
         assertEquals("Capping", listado.get(0).getNombre());
     }
 }

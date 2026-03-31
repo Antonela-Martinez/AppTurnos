@@ -50,6 +50,10 @@ public abstract class UserServiceImp <T extends Usuario, R extends UserRepositor
 		return option.get();
 		
 	}
+	
+	protected R repositorio() {
+		return this.repository;
+	}
 
 
 

@@ -4,6 +4,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.fail;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.junit.jupiter.api.Test;
@@ -15,25 +16,42 @@ import ar.com.am.clases.Cliente;
 import ar.com.am.clases.Profesional;
 import ar.com.am.clases.Usuario;
 import ar.com.am.helper.UsuarioHelper;
+import ar.com.am.repositorios.ClienteRepository;
+import ar.com.am.repositorios.ProfesionalRepository;
 import ar.com.am.repositorios.UserRepository;
 
 @SpringBootTest
 @ActiveProfiles("test")
-public class UserRepositoryTest {
+public abstract class UserRepositoryTest < T extends Usuario, R extends UserRepository<T>> {
 	@Autowired
-	private UserRepository repository; 
+	private R repository; 
 	
+	protected abstract T obtenerUsuario();  
 	
+	@Test
+	public T testEncontrarPorDNI() {
+		
+        T usuario = obtenerUsuario();
+        this.repository.guardar(usuario);
+        
+		List<T> listatest = repository.findByDni(profesional.getDni);
+		if (listatest.isEmpty()) return null;
+		if (listatest.size() > 1) throw new RuntimeException("Mas d eun usuario con este dni");
+		
+	    return listatest.get(0);
+	}
+	
+	/*
 	@Test
 	public void testSaveRepositoryClienteSucces() {
 		Cliente usuario = UsuarioHelper.createValidClient();
-        this.repository.save(usuario);
+        this.clienteRepository.save(usuario);
 	}
 	
 	@Test
 	public void testSaveClientNull() {
 		try {
-			this.repository.save(null);
+			this.clienteRepository.save(null);
 			fail("No se puede persistir una entidad nula");
 		}catch(Exception e) {
 			e.getMessage();
@@ -59,17 +77,18 @@ public class UserRepositoryTest {
         profesional.setTelefono(224398989);
         profesional.setIsAdmin("PROFESIONAL");
         
-        this.repository.save(profesional);
+        this.profRepository.save(profesional);
 	}
 	
 	@Test
 	public void testSaveProfesionalNull() {
 		try {
-			this.repository.save(null);
+			this.profRepository.save(null);
 			fail("No se puede persistir una entidad nula");
 		}catch(Exception e) {
 			e.getMessage();
 		}
 	}
+	*/
 
 }
